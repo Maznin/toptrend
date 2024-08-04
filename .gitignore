@@ -1,0 +1,28 @@
+# Global
+node_modules/
+.idea
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.ddev
+
+# ignore everything in the root except the "wp-content" directory and  .gitignore file.
+/*
+!.gitignore
+!wp-content/
+
+# project specific track/ignore
+wp-content/*
+!wp-content/themes/
+#!wp-content/plugins/
+wp-content/themes/*
+!wp-content/themes/toptrend/
+
+
+
+
