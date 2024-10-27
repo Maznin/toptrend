@@ -1,0 +1,44 @@
+.is-style-pricing-table table {
+    border: 1px solid var(--wp--preset--color--green-primary);
+}
+
+.is-style-pricing-table table th,
+.is-style-pricing-table table td {
+    padding: .75rem;
+}
+
+.is-style-pricing-table table th,
+.is-style-pricing-table table td,
+.is-style-pricing-table table thead {
+    border: none;
+}
+
+.is-style-pricing-table table th:nth-child(2),
+    .is-style-pricing-table table td:nth-child(2) {
+        text-align: right;
+    }
+
+.is-style-pricing-table table thead {
+    background-color: var(--wp--preset--color--green-primary);
+}
+
+.is-style-pricing-table tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, .05);
+    border-top: 1px solid var(--wp--preset--color--light-gray-secondary);
+    border-bottom: 1px solid var(--wp--preset--color--light-gray-secondary);
+}
+
+.is-style-pricing-table tbody tr:last-child {
+    border-bottom: unset;
+}
+
+@media (max-width: 781px) {
+    .is-style-pricing-table table {
+        table-layout: fixed;
+    }
+
+    .is-style-pricing-table table th:nth-child(1),
+    .is-style-pricing-table table td:nth-child(1) {
+        width: 55%;
+    }
+}

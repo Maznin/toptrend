@@ -1,0 +1,15 @@
+.main-breadcrumbs ol {
+    padding-left: 0;
+}
+
+.main-breadcrumbs li,
+.main-breadcrumbs li a {
+    font-size: var(--wp--preset--font-size--medium);
+    color: var(--wp--preset--color--plain-white);
+    font-weight: 500;
+}
+
+.main-breadcrumbs li:hover,
+.main-breadcrumbs li a:hover {
+    color: var(--wp--preset--color--red-primary);
+}

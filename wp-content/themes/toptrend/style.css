@@ -7,3 +7,16 @@ Version: 1.0
 Description: Custom Block Theme
 Text Domain: toptrend
 */
+
+body {
+    background: red;
+}
+
+/* Testimonials */
+.quoted-testimonial:before {
+    content: "";
+}
+
+.quoted-testimonial:after {
+    content: "";
+}

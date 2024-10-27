@@ -1,0 +1,14 @@
+{
+    "name": "acf/filtering-gallery",
+    "title": "Filtering gallery",
+    "description": "Filter trough gallery images",
+    "category": "format-gallery",
+    "icon": "align-center",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "supports": {},
+    "style": ["file:./style.css"],
+    "viewScript": ["file:./filterizr.min.js", "file:./view.js"]
+}

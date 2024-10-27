@@ -1,0 +1,13 @@
+{
+    "name": "acf/tab-gallery",
+    "title": "Tab gallery",
+    "description": "Tab trough gallery images",
+    "category": "tab-gallery",
+    "icon": "align-center",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "supports": {},
+    "viewScript": ["file:./masonry/masonry.pkgd.min.js", "file:./view.js"]
+}
