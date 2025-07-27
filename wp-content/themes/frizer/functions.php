@@ -12,7 +12,12 @@ add_theme_support( 'woocommerce' );
 }
 add_action( 'wp_enqueue_scripts', 'frizer_enqueue' );
 function frizer_enqueue() {
-wp_enqueue_style( 'frizer-style', get_stylesheet_uri() );
+    $js_theme_asset = include get_theme_file_path( 'build/js/theme.asset.php' );
+    $css_theme_asset = include get_theme_file_path( 'build/css/theme.asset.php' );
+    
+    wp_enqueue_script( 'frizer-scripts', get_template_directory_uri() . '/build/js/theme.js', $js_theme_asset['dependencies'], $js_theme_asset['version'], true );
+	wp_enqueue_style( 'frizer-style', get_template_directory_uri() . '/build/css/theme.css', $css_theme_asset['dependencies'], $css_theme_asset['version'] );
+
 }
 if ( !function_exists( 'frizer_wp_body_open' ) ) {
 function frizer_wp_body_open() {
