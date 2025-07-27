@@ -3,7 +3,8 @@
 	"scripts": {
 		"start": "wp-scripts start",
 		"start:hot": "wp-scripts start --hot",
-		"build": "wp-scripts build"
+		"build": "wp-scripts build",
+		"format": "wp-scripts format"
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^30.20.0",
