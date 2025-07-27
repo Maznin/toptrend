@@ -1,0 +1,15 @@
+{
+	"name": "your-project-name",
+	"scripts": {
+		"start": "wp-scripts start",
+		"start:hot": "wp-scripts start --hot",
+		"build": "wp-scripts build"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^30.20.0",
+		"browser-sync": "^3.0.4",
+		"browser-sync-webpack-plugin": "^2.4.0",
+		"path": "^0.12.7",
+		"webpack-remove-empty-scripts": "^1.1.1"
+	}
+}
