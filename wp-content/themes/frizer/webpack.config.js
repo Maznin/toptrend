@@ -44,6 +44,7 @@ module.exports = {
 					},
 					https: true,
 					reloadDelay: 0,
+                    notify: false,
 				},
 				{
 					reload: false, // Let webpack handle reload
