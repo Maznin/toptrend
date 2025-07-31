@@ -18,12 +18,17 @@
     --fs-h2: var(--fs-2);
 
     /* Colors */
-    --color-primary: #2563eb;
-    --color-secondary: #64748b;
-    --color-accent: #f59e42;
-    --color-bg: #f8fafc;
-    --color-surface: #ffffff;
-    --color-text: #1e293b;
-    --color-muted: #94a3b8;
-    --color-border: #e2e8f0;
+    --c-white: hsl(0, 0%, 100%);
+    --c-green: hsl(72, 87%, 43%);
+    --c-yellowish-900 : hsl(40, 48%, 48%);
+    --c-yellowish-100: hsl(44, 41%, 95%);
+    --c-neutral-1000: hsl(0, 0%, 0%);
+    --c-neutral-900: hsl(180, 9%, 6%);
+    --c-neutral-850: hsla(240, 100%, 0%, 0.102);
+    --c-neutral-800: hsl(240, 1%, 20%);
+    --c-neutral-600: hsl(240, 0%, 40%);
+    --c-neutral-400: hsl(0, 0%, 60%);
+    --c-neutral-300: hsl(0, 0%, 80%);
+    --c-neutral-200: hsla(240, 100%, 0%, 0.102);
+    --c-neutral-0: hsl(0, 0%, 100%);
 }
