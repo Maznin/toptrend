@@ -18,8 +18,12 @@ node_modules/
 
 # project specific track/ignore
 wp-content/*
+# plugins
+!wp-content/plugins/
+wp-content/plugins/*
+!wp-content/plugins/hairstylist-blocks
+# themes
 !wp-content/themes/
-#!wp-content/plugins/
 wp-content/themes/*
 !wp-content/themes/toptrend/
 !wp-content/themes/frizer/
