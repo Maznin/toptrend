@@ -27,3 +27,26 @@ $breakpoints: (
 		}
 	}
 }
+
+/*
+Example usage
+Mobile-first (min-width) example
+
+.my-class {
+  color: red;
+
+  @include respond-to(md) {
+    color: blue; // Applies from 768px and up
+  }
+}
+
+Desktop-first (max-width) example
+
+.another-class {
+  font-size: 2rem;
+
+  @include respond-to-down(sm) {
+    font-size: 1.2rem; // Applies up to 575px
+  }
+}
+*/
