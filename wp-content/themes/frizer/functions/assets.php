@@ -17,6 +17,27 @@ function frizer_enqueue() {
 
 add_action('wp_enqueue_scripts', 'frizer_enqueue');
 
+// Remove all Gutenberg styles from frontend
+function frizer_remove_gutenberg_styles() {
+    // Remove block library CSS
+    wp_dequeue_style('wp-block-library');
+    wp_dequeue_style('wp-block-library-theme');
+    wp_dequeue_style('wc-block-style'); // WooCommerce Gutenberg blocks
+    wp_dequeue_style('global-styles'); // Global styles from theme.json
+    wp_dequeue_style('classic-theme-styles');
+    wp_dequeue_style('core-block-supports');
+    // Optionally, deregister as well
+    wp_deregister_style('wp-block-library');
+    wp_deregister_style('wp-block-library-theme');
+    wp_deregister_style('wc-block-style');
+    wp_deregister_style('global-styles');
+    wp_deregister_style('classic-theme-styles');
+    wp_deregister_style('core-block-supports');
+}
+add_action('wp_enqueue_scripts', 'frizer_remove_gutenberg_styles', 100);
+
+
+
 
 
 

@@ -95,6 +95,84 @@ th {
   font-display: swap;
 }
 body {
-  font-family: "Arimo";
-  background-color: bisque;
+  font-family: "Arimo", sans-serif;
+  line-height: 1.5;
+}
+
+.screen-reader-text {
+  border: 0;
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4 h5,
+.h5 h6,
+.h6 {
+  font-family: "Arima", sans-serif;
+}
+
+h1, .h1 {
+  font-size: var(--fs-h1);
+}
+
+h2, .h2 {
+  font-size: var(--fs-h2);
+}
+
+.container {
+  max-width: 1320px;
+  width: calc(100% - 24px);
+  margin-right: auto;
+  margin-left: auto;
+}
+.container--header {
+  max-width: 1600px;
+}
+
+:root {
+  /* Font families */
+  --font-main: "Arima", system-ui, sans-serif;
+  --font-secondary: "Arimo", system-ui, sans-serif;
+  /* Font sizes */
+  --fs-1: calc(80 / 16 * 1rem);
+  --fs-2: calc(48 / 16 * 1rem);
+  --fs-3: calc(28 / 16 * 1rem);
+  --fs-4: calc(24 / 16 * 1rem);
+  --fs-5: calc(22 / 16 * 1rem);
+  --fs-6: calc(20 / 16 * 1rem);
+  --fs-7: calc(18 / 16 * 1rem);
+  --fs-8: calc(16 / 16 * 1rem);
+  --fs-9: calc(14 / 16 * 1rem);
+  --fs-10: calc(12 / 16 * 1rem);
+  --fs-h1: var(--fs-1);
+  --fs-h2: var(--fs-2);
+  /* Colors */
+  --c-white: hsl(0, 0%, 100%);
+  --c-green: hsl(72, 87%, 43%);
+  --c-yellowish-900: hsl(40, 48%, 48%);
+  --c-yellowish-100: hsl(44, 41%, 95%);
+  --c-neutral-1000: hsl(0, 0%, 0%);
+  --c-neutral-900: hsl(180, 9%, 6%);
+  --c-neutral-850: hsla(240, 100%, 0%, 0.102);
+  --c-neutral-800: hsl(240, 1%, 20%);
+  --c-neutral-600: hsl(240, 0%, 40%);
+  --c-neutral-400: hsl(0, 0%, 60%);
+  --c-neutral-300: hsl(0, 0%, 80%);
+  --c-neutral-200: hsla(240, 100%, 0%, 0.102);
+  --c-neutral-0: hsl(0, 0%, 100%);
+  --c-top-header: var(--c-yellowish-900);
+}
+
+.header__top {
+  background-color: var(--c-top-header);
+  color: var(--c-white);
 }

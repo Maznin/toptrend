@@ -1,1 +1,0 @@
-{"version":3,"file":"js/theme.js","mappings":";;;;AAAAA,KAAK,CAAE,QAAS,CAAC,C","sources":["webpack://your-project-name/./src/js/main.js"],"sourcesContent":["alert( 'works!' );\n"],"names":["alert"],"sourceRoot":""}
