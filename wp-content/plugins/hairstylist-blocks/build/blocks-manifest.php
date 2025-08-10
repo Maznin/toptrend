@@ -36,7 +36,24 @@ return array(
 			
 		),
 		'supports' => array(
-			'html' => false
+			'html' => false,
+			'align' => array(
+				'wide'
+			)
+		),
+		'attributes' => array(
+			'location_text' => array(
+				'type' => 'object'
+			),
+			'working_hours' => array(
+				'type' => 'string'
+			),
+			'social_links' => array(
+				'type' => 'object'
+			),
+			'cta_phone' => array(
+				'type' => 'object'
+			)
 		),
 		'textdomain' => 'top-header',
 		'editorScript' => 'file:./index.js',

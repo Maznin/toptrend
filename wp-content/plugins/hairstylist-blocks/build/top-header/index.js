@@ -8,7 +8,7 @@
   \***********************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"frizer/top-header","version":"0.1.0","title":"Top Header","category":"frizer-custom-blocks","icon":"table-col-after","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"top-header","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"frizer/top-header","version":"0.1.0","title":"Top Header","category":"frizer-custom-blocks","icon":"table-col-after","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false,"align":["wide"]},"attributes":{"location_text":{"type":"object"},"working_hours":{"type":"string"},"social_links":{"type":"object"},"cta_phone":{"type":"object"}},"textdomain":"top-header","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
 
 /***/ }),
 
