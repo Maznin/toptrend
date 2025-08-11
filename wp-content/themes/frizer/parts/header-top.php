@@ -8,19 +8,19 @@ $phone_number = $data['phone_number'] ?? '';
 
 <?php if (!empty($data) && array_filter($data)) : ?>
     <div class="header__top">
-        <div class="container container--header">
+        <div class="container container--header header__top__inner">
             <div class="header__top__left">
                 <?php if (!empty($address)) : ?>
                     <address class="header__top__address">
                         <a href="<?php echo esc_url($address['url']); ?>" target="_blank" rel="noopener noreferrer">
-                            <span><?php esc_html_e('Lokacija:', 'frizer'); ?></span>
+                            <span><?php esc_html_e('Adresa :', 'frizer'); ?></span>
                             <?php echo esc_html($address['title']); ?>
                         </a>
                     </address>
                 <?php endif; ?>
                 <?php if (!empty($work_hours)) : ?>
                     <div class="header__top__work-hours">
-                        <?php echo esc_html($work_hours); ?>
+                        <span><?php echo esc_html($work_hours); ?></span>
                     </div>
                 <?php endif; ?>
             </div>

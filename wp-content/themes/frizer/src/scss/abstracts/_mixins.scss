@@ -1,16 +1,16 @@
+@use "sass:map";
 
 // Responsive breakpoints map
 $breakpoints: (
 	sm: 576px,
 	md: 768px,
 	lg: 992px,
-	xl: 1200px,
-    xxl: 1400px
+	xl: 1200px
 );
 
 // Mobile-first (min-width)
 @mixin respond-to($breakpoint) {
-	$value: map-get($breakpoints, $breakpoint);
+	$value: map.get($breakpoints, $breakpoint);
 	@if $value {
 		@media (min-width: #{$value}) {
 			@content;
@@ -20,33 +20,10 @@ $breakpoints: (
 
 // Desktop-first (max-width)
 @mixin respond-to-down($breakpoint) {
-	$value: map-get($breakpoints, $breakpoint);
+	$value: map.get($breakpoints, $breakpoint);
 	@if $value {
 		@media (max-width: #{$value - 1}) {
 			@content;
 		}
 	}
 }
-
-/*
-Example usage
-Mobile-first (min-width) example
-
-.my-class {
-  color: red;
-
-  @include respond-to(md) {
-    color: blue; // Applies from 768px and up
-  }
-}
-
-Desktop-first (max-width) example
-
-.another-class {
-  font-size: 2rem;
-
-  @include respond-to-down(sm) {
-    font-size: 1.2rem; // Applies up to 575px
-  }
-}
-*/
