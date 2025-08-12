@@ -40,13 +40,10 @@ function frizer_skip_link() {
 add_action('wp_body_open', 'frizer_skip_link', 5);
 
 /**
- * Adds support for block template parts in the theme.
- *
- * This function registers support for block template parts, allowing the theme to use
- * block-based template parts in its design.
+ * Adds theme functionalities.
  */
 function frizer_add_template_parts_support() {
-  add_theme_support( 'block-template-parts' );
+  add_theme_support( 'custom-logo' );
 }
 add_action( 'after_setup_theme', 'frizer_add_template_parts_support' );
 

@@ -1,19 +1,28 @@
 <div class="header__bottom">
-    <div id="branding">
-        <div id="site-title" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
-            <?php
-            if (is_front_page() || is_home() || is_front_page() && is_home()) {
-                echo '<h1>';
-            }
-            echo '<a href="' . esc_url(home_url('/')) . '" title="' . esc_attr(get_bloginfo('name')) . '" rel="home" itemprop="url"><span itemprop="name">' . esc_html(get_bloginfo('name')) . '</span></a>';
-            if (is_front_page() || is_home() || is_front_page() && is_home()) {
-                echo '</h1>';
-            }
-            ?>
+    <div class="container container--header">
+        <div class="header__bottom__inner">
+            <div id="branding" class="header__bottom__branding" itemscope itemtype="https://schema.org/Organization">
+                <?php
+                if (function_exists('the_custom_logo') && has_custom_logo()) {
+                    the_custom_logo();
+                } else {
+                    echo '<a href="' . esc_url(home_url('/')) . '" class="site-title">' . get_bloginfo('name') . '</a>';
+                }
+                ?>
+            </div>
+            <div class="header__bottom__menu">
+                <button id="mobileMenuToggle" class="mobile-menu-toggle" aria-controls="mainNav" aria-expanded="false">
+                    <svg class="hamburger" viewBox="0 0 25 25" width="25" height="25">
+                        <rect class="hamburger__top hamburger--line" y="2" width="25" height="3"></rect>
+                        <rect class="hamburger__middle hamburger--line" y="11" width="25" height="3"></rect>
+                        <rect class="hamburger__bottom hamburger--line" y="20" width="25" height="3"></rect>
+                    </svg>
+                </button>
+                <nav id="mainNav" class="main-nav" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+                    <?php wp_nav_menu(array('theme_location' => 'main-menu', 'link_before' => '<span itemprop="name">', 'link_after' => '</span>'));
+                    ?>
+                </nav>
+            </div>
         </div>
     </div>
-    <nav id="menu" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
-        <?php wp_nav_menu(array('theme_location' => 'main-menu', 'link_before' => '<span itemprop="name">', 'link_after' => '</span>'));
-        ?>
-    </nav>
 </div>

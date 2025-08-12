@@ -2,13 +2,13 @@
 
 .header {
 
-    a {
-        color: var(--c-white);
-    }
-
     &__top {
         background-color: var(--c-top-header);
         color: var(--c-white);
+
+        a {
+            color: var(--c-white);
+        }
 
         @media (max-width: 360px) {
             font-size: var(--fs-9);
@@ -90,7 +90,7 @@
         &__socials {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 16px;
             padding-right: 20px;
             border-right: 1px solid var(--c-white);
             max-height: 22px;
@@ -119,6 +119,111 @@
                     width: 16px;
                 }
             }
+        }
+    }
+
+    &__bottom {
+        padding: 25px 0;
+        position: relative;
+
+        a {
+            color: var(--c-neutral-900);
+        }
+
+        &__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #branding {
+            max-width: 150px;
+        }
+
+        .mobile-menu-toggle {
+            background-color: transparent;
+            border: none;
+            padding: 0;
+        }
+
+
+    }
+}
+
+.main-nav {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 500ms;
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    width: calc(100% - 24px);
+    transform: translateX(-50%);
+    background-color: var(--c-white);
+    box-shadow: var(--box-shadow-3);
+
+    @include respond-to(lg) {
+        display: flex;
+        position: relative;
+    }
+
+    &.is-open {
+        grid-template-rows: 1fr;
+    }
+
+    .menu-main-menu-container {
+        overflow: hidden;
+    }
+
+    .menu-item {
+        padding: 16px 22px;
+
+        a {
+            font-weight: 600;
+        }
+
+        .sub-menu {
+            display: none;
+        }
+    }
+}
+
+.hamburger {
+    cursor: pointer;
+
+    &--line {
+        fill: var(--c-neutral-900);
+        transition:
+            y var(--hamburger-transition-duration) ease-in var(--hamburger-transition-duration),
+            rotate var(--hamburger-transition-duration) ease-in,
+            opacity 0ms var(--hamburger-transition-duration);
+        transform-origin: center;
+    }
+
+
+}
+
+.mobile-menu-toggle.is-active {
+    .hamburger {
+        &--line {
+            transition:
+                y var(--hamburger-transition-duration) ease-in,
+                rotate var(--hamburger-transition-duration) ease-in var(--hamburger-transition-duration),
+                opacity 0ms var(--hamburger-transition-duration);
+        }
+
+        &__top {
+            rotate: 45deg;
+            y: 11;
+        }
+
+        &__middle {
+            opacity: 0;
+        }
+
+        &__bottom {
+            rotate: -45deg;
+            y: 11;
         }
     }
 }

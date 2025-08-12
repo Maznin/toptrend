@@ -33,4 +33,10 @@
     --c-neutral-0: hsl(0, 0%, 100%);
 
     --c-top-header: var(--c-yellowish-900);
+
+    /* Transitions */
+    --hamburger-transition-duration: 200ms;
+
+    /* Box Shadow */
+    --box-shadow-3: 0 7px 50px rgba(0, 0, 0, 0.07);
 }
