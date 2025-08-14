@@ -23,6 +23,13 @@
                     ?>
                 </nav>
             </div>
+            <button class="header__bottom__sidebar-toggle" aria-controls="slidingSidebar" aria-expanded="false">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                    <rect class="sliding-sidebar__top sliding-sidebar--line" y="2" width="24" height="2" rx="2"></rect>
+                    <rect class="sliding-sidebar__middle sliding-sidebar--line" y="11" width="24" height="2" rx="2"></rect>
+                    <rect class="sliding-sidebar__bottom sliding-sidebar--line" y="20" width="24" height="2" rx="2"></rect>
+                </svg>
+            </button>
         </div>
     </div>
 </div>
