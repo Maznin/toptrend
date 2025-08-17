@@ -1,21 +1,12 @@
 export function initSlideout() {
   
     const slideout = document.querySelector('.slideout');
-    const closeBtn = document.querySelector('.slideout__close');
+    const closeBtn = document.querySelector('.slideout__header__close');
     const sidebarToggle = document.querySelector('.header__bottom__sidebar-toggle');
 
     // Create backdrop
     let backdrop = document.createElement('div');
     backdrop.className = 'slideout-backdrop';
-    backdrop.style.cssText = `
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 999;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s;
-  `;
     document.body.appendChild(backdrop);
 
     function openSlideout() {

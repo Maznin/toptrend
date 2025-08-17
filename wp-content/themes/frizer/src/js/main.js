@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSlideout();
   });
 
-  onScreenMax(768, () => {
+  onScreenMax(991, () => {
     initNavigation();
   });
 });
