@@ -126,7 +126,6 @@
     &__bottom {
         padding: 25px 0;
         position: relative;
-        background-color: bisque;
 
         @include respond-to(lg) {
             padding: 0;
@@ -167,7 +166,7 @@
             }
 
             svg {
-                fill: var(--c-yellowish-900);
+                fill: var(--c-primary);
                 transform: translateY(1px);
             }
         }
@@ -188,6 +187,7 @@
         transform: translateX(-50%);
         background-color: var(--c-white);
         box-shadow: var(--box-shadow-3);
+        z-index: 100;
     }
 
     &.is-open {
@@ -236,7 +236,7 @@
             &:after {
                 content: "+";
                 width: 50px;
-                background-color: var(--c-yellowish-900);
+                background-color: var(--c-primary);
                 height: 58px;
                 position: absolute;
                 right: 0;
@@ -262,7 +262,7 @@
 
             &:hover:after {
                 @include respond-to(lg) {
-                    color: var(--c-yellowish-900);
+                    color: var(--c-primary);
                     content: "-";
                 }
                 
@@ -293,7 +293,7 @@
                 position: absolute;
                 background-color: var(--c-white);
                 min-width: 240px;
-                border-top: 2px solid var(--c-yellowish-900);
+                border-top: 2px solid var(--c-primary);
                 animation: subMenuFadeOut 400ms ease-out;
                 top: 105px;
                 z-index: 2;

@@ -1,6 +1,7 @@
 body {
     font-family: "Arimo", sans-serif;
     line-height: 1.3;
+    background-color: var(--c-white);
 }
 
 a {
@@ -9,5 +10,5 @@ a {
 }
 
 a:hover {
-    color: var(--c-yellowish-900);
+    color: var(--c-primary);
 }

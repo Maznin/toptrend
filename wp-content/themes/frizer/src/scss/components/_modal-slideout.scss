@@ -48,7 +48,7 @@
 		}
 
 		&__close {
-			background: var(--c-yellowish-900);
+			background: var(--c-primary);
 			border: none;
 			border-radius: 50%;
 			width: 36px;
@@ -146,7 +146,7 @@
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				border: 1px solid var(--c-yellowish-900);
+				border: 1px solid var(--c-primary);
 				transition: all var(--deffault-transition);
 
 				.icon {
@@ -154,17 +154,17 @@
 					height: 24px;
 					background-size: contain;
 					background-repeat: no-repeat;
-					fill: var(--c-yellowish-900);
+					fill: var(--c-primary);
 					transition: all var(--deffault-transition);
 
 					& > * {
 						transition: all var(--deffault-transition);
-						fill: var(--c-yellowish-900);
+						fill: var(--c-primary);
 					}
 				}
 
 				&:hover {
-					background-color: var(--c-yellowish-900);
+					background-color: var(--c-primary);
 
 					.icon {
 						fill: var(--c-white);

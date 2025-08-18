@@ -1,0 +1,14 @@
+{
+    "name": "acf/main-hero",
+    "title": "Main Hero Section",
+    "description": "Main Hero Section",
+    "category": "frizer-custom-blocks",
+    "icon": "align-center",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "supports": {},
+    "style": ["file:./style.css"],
+    "viewScript": ["file:./view.js"]
+}

@@ -5,7 +5,7 @@
 
     /* Font sizes */
     --fs-1: calc(80 / 16 * 1rem);
-    --fs-2: calc(48 / 16 * 1rem);
+    --fs-2: calc(44 / 16 * 1rem);
     --fs-3: calc(28 / 16 * 1rem);
     --fs-4: calc(24 / 16 * 1rem);
     --fs-5: calc(22 / 16 * 1rem);
@@ -17,7 +17,7 @@
     --fs-h1: var(--fs-1);
     --fs-h2: var(--fs-2);
 
-    /* Colors */
+    /* Colors */ 
     --c-white: hsl(0, 0%, 100%);
     --c-green: hsl(72, 87%, 43%);
     --c-yellowish-900 : hsl(40, 48%, 48%);
@@ -31,8 +31,9 @@
     --c-neutral-300: hsl(0, 0%, 80%);
     --c-neutral-200: hsla(240, 100%, 0%, 0.102);
     --c-neutral-0: hsl(0, 0%, 100%);
+    --c-primary: var(--c-green);
 
-    --c-top-header: var(--c-yellowish-900);
+    --c-top-header: var(--c-primary);
 
     /* Transitions */
     --deffault-transition: 300ms ease-out;
