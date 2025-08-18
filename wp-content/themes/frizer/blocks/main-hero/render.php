@@ -1,7 +1,7 @@
 <section class="hero">
 	<div class="container hero__inner">
 		<div class="hero__content">
-		<span class="hero__subtitle">Welcome To Our Barbex</span>
+		<span class="hero__subtitle section__subtitle">Welcome To Our Barbex</span>
 		<h1 class="hero__title">
 			We offer hair loss Solutions
 		</h1>

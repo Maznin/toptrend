@@ -28,19 +28,8 @@
     &__content {
 
         @include respond-to(lg) {
-            // max-width: 48vw;
-            // padding-left: 3vw;
             z-index: 2;
         }
-    }
-
-    &__subtitle {
-        display: block;
-        color: var(--c-primary);
-        font-size: var(--fs-7);
-        font-weight: 600;
-        margin-bottom: 1.5rem;
-        letter-spacing: 0.01em;
     }
 
     &__title {
