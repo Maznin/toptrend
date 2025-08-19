@@ -117,6 +117,11 @@ a:hover {
   color: var(--c-primary);
 }
 
+section {
+  position: relative;
+  z-index: 1;
+}
+
 :root {
   /* Font families */
   --font-main: "Arima", system-ui, sans-serif;
@@ -194,9 +199,9 @@ a:hover {
 h1, .h1,
 h2, .h2,
 h3, .h3,
-h4, .h4 h5,
-.h5 h6,
-.h6 {
+h4, .h4,
+h5, .h5,
+h6, .h6 {
   font-family: "Arima", sans-serif;
   color: var(--c-neutral-900);
 }
@@ -214,7 +219,7 @@ h2, .h2 {
     font-size: var(--fs-h2-md);
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   h2, .h2 {
     font-size: var(--fs-h2);
   }
@@ -231,6 +236,16 @@ p, .p {
   color: var(--c-neutral-800);
   line-height: 1.65;
   margin-bottom: 25px;
+}
+
+.section-dark h1, .section-dark .h1,
+.section-dark h2, .section-dark .h2,
+.section-dark h3, .section-dark .h3,
+.section-dark h4, .section-dark .h4,
+.section-dark h5, .section-dark .h5,
+.section-dark h6, .section-dark .h6,
+.section-dark a, .section-dark p, .section-dark ul {
+  color: var(--c-white);
 }
 
 .screen-reader-text {
@@ -330,6 +345,13 @@ p, .p {
   background-position: center;
 }
 
+.section-dark {
+  color: var(--c-white);
+}
+.section-dark .section-subtitle-backdrop {
+  color: var(--c-white);
+}
+
 .text-center {
   text-align: center;
 }
@@ -366,6 +388,15 @@ p, .p {
 .btn:hover {
   color: var(--c-white);
 }
+.btn--secondary::before {
+  transition: all 300ms ease-out;
+}
+.btn--secondary:hover {
+  color: var(--c-primary);
+}
+.btn--secondary:hover:before {
+  background: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2712%27 height=%2716%27 fill=%27%23a7cd0e%27 stroke=%27%23fff%27 stroke-width=%270%27 viewBox=%270 0 16 16%27%3E%3Cpath stroke=%27none%27 d=%27m3.707 2.293 5 5a1 1 0 0 1 0 1.414l-5 5a1 1 0 0 1-1.414-1.414L6.586 8 2.293 3.707a1 1 0 0 1 1.414-1.414Zm5 0 5 5a1 1 0 0 1 0 1.414l-5 5a1 1 0 0 1-1.414-1.414L11.586 8 7.293 3.707a1 1 0 0 1 1.414-1.414Z%27/%3E%3C/svg%3E") no-repeat;
+}
 .btn:after {
   content: "";
   position: absolute;
@@ -380,6 +411,9 @@ p, .p {
   z-index: -1;
   border-radius: 50%;
   opacity: 0;
+}
+.btn--secondary:after {
+  background-color: var(--c-white);
 }
 .btn:hover:after {
   width: 100%;
@@ -765,8 +799,6 @@ p, .p {
 
 .services {
   background-color: var(--c-neutral-50);
-  position: relative;
-  z-index: 1;
 }
 .services__title {
   margin-bottom: 60px;
@@ -853,6 +885,57 @@ p, .p {
   width: -moz-max-content;
   width: max-content;
   margin: 50px auto 0 auto;
+}
+
+.working-hours {
+  background-color: var(--c-neutral-900);
+  background-image: url(../images/brijac-pozadina.8288826d.png);
+  background-repeat: no-repeat;
+  background-position: bottom left;
+}
+.working-hours__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+@media (min-width: 992px) {
+  .working-hours__inner {
+    flex-direction: row;
+    gap: 25px;
+  }
+}
+.working-hours__title {
+  margin-bottom: 25px;
+}
+@media (min-width: 992px) {
+  .working-hours__content {
+    flex-basis: 60%;
+  }
+}
+@media (min-width: 992px) {
+  .working-hours__images {
+    display: flex;
+    align-items: center;
+    flex-basis: 40%;
+  }
+}
+.working-hours__description {
+  margin-bottom: 35px;
+  max-width: 630px;
+}
+.working-hours__list {
+  margin-bottom: 50px;
+  max-width: 530px;
+}
+.working-hours__list__item {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-7);
+  font-family: var(--font-main);
+  line-height: 1.7;
+  border-bottom: 1px dashed var(--c-white);
+  padding-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .slideout,

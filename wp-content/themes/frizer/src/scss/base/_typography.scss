@@ -3,8 +3,8 @@
 h1, .h1,
 h2, .h2,
 h3, .h3,
-h4, .h4
-h5, .h5
+h4, .h4, 
+h5, .h5, 
 h6, .h6 {
     font-family: "Arima", sans-serif;
     color: var(--c-neutral-900);
@@ -22,7 +22,7 @@ h2, .h2 {
         font-size: var(--fs-h2-md);
     }
 
-    @include respond-to(md) {
+    @include respond-to(lg) {
         font-size: var(--fs-h2);
     }
 }
@@ -40,3 +40,14 @@ p, .p {
     margin-bottom: 25px;
 }
 
+.section-dark {
+    h1,.h1,
+    h2,.h2,
+    h3,.h3,
+    h4,.h4, 
+    h5,.h5, 
+    h6,.h6,
+    a, p, ul {
+        color: var(--c-white);
+    }
+}

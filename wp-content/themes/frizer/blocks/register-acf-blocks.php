@@ -4,7 +4,8 @@ function frizer_register_all_blocks() {
     $blocks = array(
         'main-hero',
         'about',
-        'services'
+        'services',
+        'working-hours'
         // Add more block.json paths here
     );
 

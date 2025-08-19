@@ -94,6 +94,14 @@
     }
 }
 
+.section-dark {
+    color: var(--c-white);
+    
+    .section-subtitle-backdrop {
+        color: var(--c-white);
+    }
+}
+
 // Text
 .text-center {
     text-align: center;

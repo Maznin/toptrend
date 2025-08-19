@@ -12,3 +12,8 @@ a {
 a:hover {
     color: var(--c-primary);
 }
+
+section {
+    position: relative;
+    z-index: 1;
+}

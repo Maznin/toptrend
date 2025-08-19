@@ -1,0 +1,12 @@
+{
+    "name": "acf/working-hours",
+    "title": "Working Hours Section",
+    "description": "Working Hours Section",
+    "category": "frizer-custom-blocks",
+    "icon": "align-center",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "supports": {}
+}
