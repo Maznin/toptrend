@@ -1,7 +1,7 @@
 <section class="about section-padding">
 	<div class="container about__inner">
 		<div class="about__images">
-			<img src="<?php echo get_template_directory_uri(); ?>/src/img/muska-frizura-1.jpg" alt="Muska frizura o nama sekcija" class="about__img" />
+			<img src="<?php echo get_template_directory_uri(); ?>/src/img/muska-frizura-1.jpg" width="368" height="520" loading="lazy" alt="Muska frizura o nama sekcija" class="about__img" />
 		</div>
 		<div class="about__content">
 			<span class="section-subtitle-backdrop">

@@ -13,7 +13,7 @@
 		</a>
 	</div>
 	<div class="hero__images">
-		<img src="<?php echo get_template_directory_uri(); ?>/src/img/salon-1.jpg" alt="Slika Salona" class="hero__img" />
+		<img src="<?php echo get_template_directory_uri(); ?>/src/img/salon-1.jpg" width="800" height="600" alt="Slika Salona" class="hero__img" />
 	</div>
 	</div>
 </section>

@@ -8,7 +8,5 @@
         "mode": "edit",
         "renderTemplate": "render.php"
     },
-    "supports": {},
-    "style": ["file:./style.css"],
-    "viewScript": ["file:./view.js"]
+    "supports": {}
 }
