@@ -19,6 +19,7 @@
     --fs-h2-sm: calc(30 / 16 * 1rem);
     --fs-h2-md: calc(42 / 16 * 1rem);
     --fs-h2: calc(48 / 16 * 1rem);
+    --fs-h4: var(--fs-4);
 
     /* Colors */ 
     --c-white: hsl(0, 0%, 100%);
@@ -36,6 +37,7 @@
     --c-neutral-400: hsl(0, 0%, 60%);
     --c-neutral-300: hsl(0, 0%, 80%);
     --c-neutral-200: hsla(240, 100%, 0%, 0.102);
+    --c-neutral-50: hsl(0, 0%, 97%);
     --c-neutral-0: hsl(0, 0%, 100%);
     --c-primary: var(--c-green);
 
