@@ -1,3 +1,5 @@
+@use '../abstracts/index' as *;
+
 h1, .h1,
 h2, .h2,
 h3, .h3,
@@ -13,6 +15,22 @@ h1, .h1 {
 }
 
 h2, .h2 {
-    font-size: var(--fs-h2);
+    font-size: var(--fs-h2-sm);
+    font-weight: 600;
+
+    @include respond-to(sm) {
+        font-size: var(--fs-h2-md);
+    }
+
+    @include respond-to(md) {
+        font-size: var(--fs-h2);
+    }
+}
+
+p, .p {
+    font-size: var(--fs-8);
+    color: var(--c-neutral-800);
+    line-height: 1.65;
+    margin-bottom: 25px;
 }
 

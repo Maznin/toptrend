@@ -1,0 +1,14 @@
+{
+    "name": "acf/about",
+    "title": "About Section",
+    "description": "About Section",
+    "category": "frizer-custom-blocks",
+    "icon": "align-center",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "supports": {},
+    "style": ["file:./style.css"],
+    "viewScript": ["file:./view.js"]
+}

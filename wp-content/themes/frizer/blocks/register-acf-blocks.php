@@ -2,7 +2,8 @@
 function frizer_register_all_blocks() {
 	// Define block directories
     $blocks = array(
-        'main-hero'
+        'main-hero',
+        'about'
         // Add more block.json paths here
     );
 

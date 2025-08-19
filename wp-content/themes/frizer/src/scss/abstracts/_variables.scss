@@ -15,12 +15,18 @@
     --fs-9: calc(14 / 16 * 1rem);
     --fs-10: calc(12 / 16 * 1rem);
     --fs-h1: var(--fs-1);
-    --fs-h2: var(--fs-2);
+    
+    --fs-h2-sm: calc(30 / 16 * 1rem);
+    --fs-h2-md: calc(42 / 16 * 1rem);
+    --fs-h2: calc(48 / 16 * 1rem);
 
     /* Colors */ 
     --c-white: hsl(0, 0%, 100%);
     --c-green: hsl(72, 87%, 43%);
+    --c-greenish-900: hsla(72, 87%, 43%, 0.9);
+    --c-greenish-100: hsl(73, 49%, 83%);
     --c-yellowish-900 : hsl(40, 48%, 48%);
+    --c-yellowish-200: hsl(40.68deg 44.36% 73.92%);
     --c-yellowish-100: hsl(44, 41%, 95%);
     --c-neutral-1000: hsl(0, 0%, 0%);
     --c-neutral-900: hsl(180, 9%, 6%);

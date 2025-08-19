@@ -1,0 +1,29 @@
+@use '../abstracts/index' as *;
+
+.about {
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        @include respond-to(lg) {
+            flex-direction: row;
+        }
+    }
+
+    &__title {
+        margin-bottom: 25px;
+    }
+
+    &__images {
+        @include respond-to(lg) {
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    .btn {
+        margin-top: 40px;
+    }
+}
