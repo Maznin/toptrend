@@ -1,6 +1,10 @@
 @use '../abstracts/index' as *;
 
 .about {
+    background-image: url(../img/about-1.png);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+
     &__inner {
         display: flex;
         flex-direction: column;
