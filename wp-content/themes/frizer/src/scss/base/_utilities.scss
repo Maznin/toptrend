@@ -30,6 +30,10 @@
     }
 
     @include respond-to(xl) {
+        max-width: 1140px;
+    }
+
+    @include respond-to(xxl) {
         max-width: 1320px;
     }
 
@@ -100,6 +104,17 @@
     .section-subtitle-backdrop {
         color: var(--c-white);
     }
+}
+
+.section-rating {
+    &__icon {
+        fill: var(--c-primary);
+    }
+}
+
+// Display
+.d-block {
+    display: block;
 }
 
 // Text

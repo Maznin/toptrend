@@ -231,6 +231,12 @@ h4, .h4 {
   margin-bottom: 10px;
 }
 
+h5, .h5 {
+  font-size: var(--fs-6);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
 p, .p {
   font-size: var(--fs-8);
   color: var(--c-neutral-800);
@@ -281,6 +287,11 @@ p, .p {
   }
 }
 @media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1400px) {
   .container {
     max-width: 1320px;
   }
@@ -350,6 +361,14 @@ p, .p {
 }
 .section-dark .section-subtitle-backdrop {
   color: var(--c-white);
+}
+
+.section-rating__icon {
+  fill: var(--c-primary);
+}
+
+.d-block {
+  display: block;
 }
 
 .text-center {
@@ -936,6 +955,67 @@ p, .p {
   border-bottom: 1px dashed var(--c-white);
   padding-bottom: 15px;
   margin-bottom: 15px;
+}
+
+.testimonials {
+  background-color: var(--c-neutral-50);
+  background-image: url(../images/makaze-pozadina.b236fcb9.png);
+  background-repeat: no-repeat;
+  background-position: bottom right;
+}
+.testimonials__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+@media (min-width: 1200px) {
+  .testimonials__inner {
+    flex-direction: row;
+  }
+}
+.testimonials__title {
+  margin-bottom: 25px;
+}
+.testimonials__description {
+  font-size: var(--fs-6);
+}
+.testimonials__list {
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+}
+@media (min-width: 768px) {
+  .testimonials__list {
+    gap: 24px;
+    flex-direction: row;
+  }
+}
+.testimonials__item {
+  background: var(--c-white) url(../images/utisak.5006e1eb.png) no-repeat center;
+  padding: 40px 30px;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .testimonials__item {
+    padding: 50px 40px;
+    flex-basis: calc(50% - 24px);
+  }
+}
+.testimonials__item__img {
+  border-radius: 50%;
+  display: inline-block;
+  overflow: hidden;
+  max-width: 100px;
+  margin-bottom: 30px;
+}
+.testimonials__item__description {
+  font-size: var(--fs-7);
+  margin-bottom: 35px;
+}
+@media (min-width: 768px) {
+  .testimonials__item__description {
+    font-size: var(--fs-6);
+  }
 }
 
 .slideout,

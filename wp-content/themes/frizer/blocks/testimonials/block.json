@@ -1,0 +1,12 @@
+{
+    "name": "acf/testimonials",
+    "title": "Testimonials Section",
+    "description": "Testimonials Section",
+    "category": "frizer-custom-blocks",
+    "icon": "align-center",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "supports": {}
+}
