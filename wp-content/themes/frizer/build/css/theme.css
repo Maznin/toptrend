@@ -358,6 +358,7 @@ p, .p {
 
 .section-dark {
   color: var(--c-white);
+  background-color: var(--c-neutral-900);
 }
 .section-dark .section-subtitle-backdrop {
   color: var(--c-white);
@@ -907,7 +908,6 @@ p, .p {
 }
 
 .working-hours {
-  background-color: var(--c-neutral-900);
   background-image: url(../images/brijac-pozadina.8288826d.png);
   background-repeat: no-repeat;
   background-position: bottom right;
