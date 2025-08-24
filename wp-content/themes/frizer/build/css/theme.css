@@ -153,6 +153,7 @@ section {
   --c-neutral-1000: hsl(0, 0%, 0%);
   --c-neutral-900: hsl(180, 9%, 6%);
   --c-neutral-850: hsla(240, 100%, 0%, 0.102);
+  --c-neutral-825: hsl(200deg 10.71% 10.98%);
   --c-neutral-800: hsl(240, 1%, 20%);
   --c-neutral-600: hsl(240, 0%, 40%);
   --c-neutral-400: hsl(0, 0%, 60%);
@@ -2325,6 +2326,12 @@ html.with-fancybox body.hide-scrollbar {
   }
 }
 
+.gallery {
+  background-color: var(--c-neutral-825);
+  background-image: url(../images/line-bg.9d78125c.png);
+  background-repeat: no-repeat;
+  background-position: bottom right;
+}
 .gallery__items {
   display: flex;
   flex-wrap: wrap;

@@ -1,6 +1,11 @@
 @use '../abstracts/index' as *;
 
 .gallery {
+    background-color: var(--c-neutral-825);
+    background-image: url(../img/line-bg.png);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+
     &__items {
         display: flex;
         flex-wrap: wrap;
