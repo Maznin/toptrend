@@ -12,5 +12,8 @@
 		"browser-sync-webpack-plugin": "^2.4.0",
 		"path": "^0.12.7",
 		"webpack-remove-empty-scripts": "^1.1.1"
+	},
+	"dependencies": {
+		"@fancyapps/ui": "^6.0.24"
 	}
 }

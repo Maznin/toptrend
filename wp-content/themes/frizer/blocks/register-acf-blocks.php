@@ -6,7 +6,8 @@ function frizer_register_all_blocks() {
         'about',
         'services',
         'working-hours',
-        'testimonials'
+        'testimonials',
+        'gallery'
         // Add more block.json paths here
     );
 

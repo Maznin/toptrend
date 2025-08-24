@@ -40,6 +40,11 @@
     &--header {
         max-width: 1600px;
     }
+
+    &--full {
+        max-width: 100%;
+        width: calc(100% - 60px);
+    }
 }
 
 .section-subtitle {
@@ -126,4 +131,12 @@
 // Spacing
 .mb-0 {
     margin-bottom: 0;
+}
+
+.mb-50 {
+    margin-bottom: 50px;
+}
+
+.mb-60 {
+    margin-bottom: 60px;
 }
