@@ -16,3 +16,6 @@
         <?php get_template_part('parts/header-bottom'); ?>
     </header>
     <main id="content" role="main">
+    <?php if (!is_front_page()) : ?>
+        <?php get_template_part('parts/sub-page-hero'); ?>
+    <?php endif; ?>
