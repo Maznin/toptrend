@@ -5,7 +5,7 @@ $image = $data['sub_page_hero_image'] ?? '';
 ?>
 
 <?php if (!empty($header_show)) : ?>
-<div class="subpage-hero <?php echo empty($image) ? 'no-image-bg' : ''; ?>" style="<?php echo !empty($image) ? "background-image: url('" . esc_url($image) . "')" : ''; ?>">
+<section class="subpage-hero <?php echo empty($image) ? 'no-image-bg' : ''; ?>" style="<?php echo !empty($image) ? "background-image: url('" . esc_url($image) . "')" : ''; ?>">
     <div class="container text-center">
         <h1 class="subpage-hero__title"><?php echo esc_html(get_the_title()); ?></h1>
         <?php
@@ -14,6 +14,6 @@ $image = $data['sub_page_hero_image'] ?? '';
             }
         ?>
     </div>
-</div>
+</section>
 <?php endif; ?>
 
