@@ -7,7 +7,8 @@ function frizer_register_all_blocks() {
         'services',
         'working-hours',
         'testimonials',
-        'gallery'
+        'gallery',
+        'pricing-table',
         // Add more block.json paths here
     );
 

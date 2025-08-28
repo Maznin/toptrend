@@ -1,0 +1,94 @@
+@use '../abstracts/index' as *;
+
+.pricing-table {
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        @include respond-to(lg) {
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+    }
+
+    &__item {
+        padding: 15px;
+        box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.05);
+        display: flex;
+        gap: 30px;
+        flex-direction: column;
+
+        @include respond-to(sm) {
+            flex-direction: row;
+            gap: 20px;
+            align-items: center;
+        }
+
+        @include respond-to(lg) {
+            flex-basis: calc(50% - 20px);
+        }
+
+        &__img {
+
+            @include respond-to(sm) {
+                max-width: 120px;
+            }
+        }
+
+        &__content {
+            @include respond-to(sm) {
+                width: 100%;
+            }
+        }
+
+        &__title {
+            font-size: var(--fs-6);
+            margin-bottom: 0;
+            line-height: 1.6;
+
+            @include respond-to(lg) {
+                font-size: var(--fs-4);
+                
+            }
+        }
+
+        &__price {
+            font-size: var(--fs-6);
+            font-family: var(--font-main);
+            color: var(--c-primary);
+            font-weight: 600;
+            padding-left: 45px;
+            position: relative;
+
+            // @include respond-to(sm) {
+            //     flex-direction: row;
+            //     gap: 25px;
+            // }
+
+            &:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 40px;
+                height: 1px;
+                border: 1px dashed var(--c-primary);
+            }
+
+            .currency {
+                font-size: var(--fs-9);
+            }
+        }
+
+        .layout-help {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 5px;
+        }
+    }
+}

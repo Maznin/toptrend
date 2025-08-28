@@ -1,0 +1,12 @@
+{
+    "name": "acf/pricing-table",
+    "title": "Pricing Table Section",
+    "description": "Pricing Table Section",
+    "category": "frizer-custom-blocks",
+    "icon": "align-center",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "supports": {}
+}
