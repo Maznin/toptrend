@@ -2605,6 +2605,62 @@ html.with-fancybox body.hide-scrollbar {
   opacity: 1;
 }
 
+.filtering-gallery .filter-controls-wrap {
+  overflow: hidden;
+}
+.filtering-gallery .filter-controls {
+  display: flex;
+  justify-content: flex-start;
+  font-size: var(--fs-7);
+  font-family: var(--font-main);
+  font-weight: 600;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+}
+@media (min-width: 576px) {
+  .filtering-gallery .filter-controls {
+    font-size: var(--fs-5);
+    justify-content: center;
+    overflow-x: visible;
+    margin-bottom: 30px;
+  }
+}
+.filtering-gallery .filter-controls .filter-button {
+  cursor: pointer;
+  transition: var(--link-color-transition-1);
+  padding: 5px 10px;
+}
+@media (min-width: 576px) {
+  .filtering-gallery .filter-controls .filter-button {
+    padding: 0 10px;
+  }
+}
+.filtering-gallery .filter-controls .filter-button:hover,
+.filtering-gallery .filter-controls .filter-button.active {
+  color: var(--c-primary);
+}
+.filtering-gallery .filtr-item {
+  width: 50%;
+}
+@media (min-width: 768px) {
+  .filtering-gallery .filtr-item {
+    flex-wrap: nowrap;
+    width: 33.333%;
+  }
+}
+@media (min-width: 1200px) {
+  .filtering-gallery .filtr-item {
+    flex-wrap: nowrap;
+    width: 25%;
+  }
+}
+.filtering-gallery .filtr-item a, .filtering-gallery .filtr-item img {
+  display: block;
+}
+
 .pricing-table__list {
   display: flex;
   flex-direction: column;

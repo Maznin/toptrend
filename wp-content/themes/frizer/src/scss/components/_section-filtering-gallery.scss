@@ -1,0 +1,60 @@
+@use '../abstracts/index' as *;
+
+.filtering-gallery {
+    .filter-controls-wrap {
+        overflow: hidden;
+    }
+
+    .filter-controls {
+        display: flex;
+        justify-content: flex-start;
+        font-size: var(--fs-7);
+        font-family: var(--font-main);
+        font-weight: 600;
+        margin-bottom: 20px;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: thin;
+
+        @include respond-to(sm) {
+            font-size: var(--fs-5);
+            justify-content: center;
+            overflow-x: visible;
+            margin-bottom: 30px;
+        }
+
+        .filter-button {
+            cursor: pointer;
+            transition: var(--link-color-transition-1);
+            padding: 5px 10px;
+
+            @include respond-to(sm) {
+                padding: 0 10px;
+            }
+        }
+
+        .filter-button:hover,
+        .filter-button.active {
+            color: var(--c-primary);
+        }
+    }
+
+    .filtr-item {
+        width: 50%;
+
+        @include respond-to(md) {
+            flex-wrap: nowrap;
+            width: 33.333%;
+        }
+        
+        @include respond-to(xl) {
+            flex-wrap: nowrap;
+            width: 25%;
+        }
+
+        a,img {
+            display: block;
+        }
+    }
+}

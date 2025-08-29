@@ -8,6 +8,7 @@ function frizer_register_all_blocks() {
         'working-hours',
         'testimonials',
         'gallery',
+        'filtering-gallery',
         'pricing-table',
         // Add more block.json paths here
     );

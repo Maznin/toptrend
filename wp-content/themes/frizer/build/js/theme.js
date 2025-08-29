@@ -754,9 +754,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fancyapps_ui_dist_fancybox___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @fancyapps/ui/dist/fancybox/ */ "./node_modules/@fancyapps/ui/dist/fancybox/index.js");
 
 function fancyBoxGallery() {
-  _fancyapps_ui_dist_fancybox___WEBPACK_IMPORTED_MODULE_0__.Fancybox.bind('[data-fancybox="gallery"]', {
-    // Your custom options for a specific gallery
-  });
+  _fancyapps_ui_dist_fancybox___WEBPACK_IMPORTED_MODULE_0__.Fancybox.bind('[data-fancybox="gallery"]', {});
+  _fancyapps_ui_dist_fancybox___WEBPACK_IMPORTED_MODULE_0__.Fancybox.bind('[data-fancybox="filtering-gallery"]', {});
 }
 
 /***/ }),
