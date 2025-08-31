@@ -18,7 +18,7 @@
 				<?php foreach( $gallery as $image ): 
 					?>
 					<div class="gallery__item">
-						<a href="<?php echo esc_url( $image['image']['url'] ); ?>" data-fancybox="gallery">
+						<a href="<?php echo esc_url( $image['image']['url'] ); ?>" data-fancybox="gallery" class="animated-thumb">
 							<?php echo wp_get_attachment_image( $image['image']['id'], 'medium', false, array( 'loading' => 'lazy' ) ); ?>
 						</a>
 					</div>

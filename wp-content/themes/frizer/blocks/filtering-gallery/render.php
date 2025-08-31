@@ -39,7 +39,7 @@ $filters = [
 					$filter = is_array($categories) ? implode(",", array_map('esc_attr', $categories)) : '';
 				?>
 					<div class="filtr-item" data-category="<?php echo esc_attr($filter); ?>" data-sort="value">
-						<a href="<?php echo esc_url($img['url']); ?>" data-fancybox="filtering-gallery" <?php echo is_admin() ? 'style="pointer-events: none;"' : ""; ?>>
+						<a href="<?php echo esc_url($img['url']); ?>" class="animated-thumb" data-fancybox="filtering-gallery" <?php echo is_admin() ? 'style="pointer-events: none;"' : ""; ?>>
 							<img loading="lazy"
 								 decoding="async"
 								 width="<?php echo esc_attr($img['width']); ?>"
