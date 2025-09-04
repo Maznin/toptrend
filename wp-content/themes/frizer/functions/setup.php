@@ -53,3 +53,8 @@ function frizer_register_footer_menu() {
 }
 add_action('after_setup_theme', 'frizer_register_footer_menu');
 
+/**
+ * Remove automatic paragraph formatting for Contact Form 7
+ */
+add_filter('wpcf7_autop_or_not', '__return_false');
+
