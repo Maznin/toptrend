@@ -1,6 +1,13 @@
 @use '../abstracts/index' as *;
 
 .contact {
+    
+
+    @include respond-to(lg) {
+        position: relative;
+        z-index: 2;
+    }
+
     &__inner {
         display: flex;
         gap: 60px;

@@ -2823,6 +2823,12 @@ html.with-fancybox body.hide-scrollbar {
   gap: 5px;
 }
 
+@media (min-width: 992px) {
+  .contact {
+    position: relative;
+    z-index: 2;
+  }
+}
 .contact__inner {
   display: flex;
   gap: 60px;
@@ -2890,6 +2896,15 @@ html.with-fancybox body.hide-scrollbar {
 @media (min-width: 992px) {
   .contact__form {
     flex-basis: 60%;
+  }
+}
+
+.google-map {
+  margin-top: -50px;
+}
+@media (min-width: 992px) {
+  .google-map {
+    margin-top: -200px;
   }
 }
 

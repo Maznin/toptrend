@@ -1,0 +1,3 @@
+<section class="google-map">
+	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2902.9071351201706!2d21.8900372!3d43.3162034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4755b0ad81a20c5f%3A0x6e2a03212e75ad8f!2sFrizerski%20salon%20-%20Top%20Trend!5e0!3m2!1ssr!2srs!4v1756983421004!5m2!1ssr!2srs" width="100%" height="570" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
