@@ -2,6 +2,7 @@
 @use 'base/fonts';
 @use 'base/base';
 @use 'base/typography';
+@use 'base/plugin-overrides.scss';
 @use 'base/utilities';
 @use 'base/buttons';
 @use "../../node_modules/@fancyapps/ui/dist/fancybox/fancybox.css";
@@ -18,4 +19,5 @@
 @use 'components/section-gallery';
 @use 'components/section-filtering-gallery';
 @use 'components/section-pricing';
+@use 'components/section-contact';
 @use 'components/modal-slideout';

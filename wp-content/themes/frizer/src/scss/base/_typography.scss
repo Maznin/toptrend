@@ -6,7 +6,7 @@ h3, .h3,
 h4, .h4, 
 h5, .h5, 
 h6, .h6 {
-    font-family: "Arima", sans-serif;
+    font-family: var(--font-main);
     color: var(--c-neutral-900);
 }
 
@@ -56,4 +56,9 @@ p, .p {
     a, p, ul {
         color: var(--c-white);
     }
+}
+
+input,
+textarea {
+    font-family: var(--font-secondary);
 }

@@ -25,7 +25,8 @@
     --c-white: hsl(0, 0%, 100%);
     --c-green: hsl(72, 87%, 43%);
     --c-greenish-900: hsla(72, 87%, 43%, 0.9);
-    --c-greenish-100: hsl(73, 49%, 83%);
+    --c-greenish-200: hsl(73, 49%, 83%);
+    --c-greenish-100: hsl(73deg 33.29% 92.64%);
     --c-yellowish-900 : hsl(40, 48%, 48%);
     --c-yellowish-200: hsl(40.68deg 44.36% 73.92%);
     --c-yellowish-100: hsl(44, 41%, 95%);
@@ -41,6 +42,7 @@
     --c-neutral-50: hsl(0, 0%, 97%);
     --c-neutral-0: hsl(0, 0%, 100%);
     --c-primary: var(--c-green);
+    --c-alert: hsl(354.25deg 70.46% 53.53%);
 
     --c-top-header: var(--c-primary);
 
