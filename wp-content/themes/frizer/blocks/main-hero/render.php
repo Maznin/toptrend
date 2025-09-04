@@ -8,8 +8,8 @@
 		<p class="hero__desc">
 			Our hair loss solutions include all of the necessary products to combat the ever-increasing problem of hair loss
 		</p>
-		<a href="#booking" class="hero__btn btn">
-			Booking Appointment <span class="btn__icon"></span>
+		<a href="/zakazivanje/" class="hero__btn btn">
+			Zakažite termin<span class="btn__icon"></span>
 		</a>
 	</div>
 	<div class="hero__images">
