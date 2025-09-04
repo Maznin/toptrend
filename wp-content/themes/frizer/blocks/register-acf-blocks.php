@@ -10,6 +10,7 @@ function frizer_register_all_blocks() {
         'gallery',
         'filtering-gallery',
         'pricing-table',
+        'contact'
         // Add more block.json paths here
     );
 

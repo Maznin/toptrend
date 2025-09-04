@@ -1,0 +1,12 @@
+{
+    "name": "acf/contact",
+    "title": "Contact section",
+    "description": "Contact section",
+    "category": "frizer-custom-blocks",
+    "icon": "align-center",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "supports": {}
+}
