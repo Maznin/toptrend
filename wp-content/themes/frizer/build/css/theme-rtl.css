@@ -2597,6 +2597,9 @@ html.with-fancybox body.hide-scrollbar {
   background-repeat: no-repeat;
   background-position: bottom left;
 }
+.testimonials__content {
+  flex-basis: 33.33%;
+}
 .testimonials__inner {
   display: flex;
   flex-direction: column;
@@ -2617,11 +2620,18 @@ html.with-fancybox body.hide-scrollbar {
   display: flex;
   gap: 30px;
   flex-direction: column;
+  flex-basis: 66.66%;
 }
 @media (min-width: 768px) {
   .testimonials__list {
     gap: 24px;
     flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+@media (min-width: 1200px) {
+  .testimonials__list {
+    align-items: flex-start;
   }
 }
 .testimonials__item {
@@ -2631,8 +2641,13 @@ html.with-fancybox body.hide-scrollbar {
 }
 @media (min-width: 768px) {
   .testimonials__item {
-    padding: 50px 40px;
+    padding: 40px;
     flex-basis: calc(50% - 24px);
+  }
+}
+@media (min-width: 1200px) {
+  .testimonials__item:nth-child(odd) {
+    margin-top: -70px;
   }
 }
 .testimonials__item__img {
@@ -2644,11 +2659,11 @@ html.with-fancybox body.hide-scrollbar {
 }
 .testimonials__item__description {
   font-size: var(--fs-7);
-  margin-bottom: 35px;
+  margin-bottom: 20px;
 }
 @media (min-width: 768px) {
   .testimonials__item__description {
-    font-size: var(--fs-6);
+    font-size: var(--fs-7);
   }
 }
 

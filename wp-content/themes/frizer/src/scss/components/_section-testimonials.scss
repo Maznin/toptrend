@@ -6,6 +6,10 @@
     background-repeat: no-repeat;
     background-position: bottom right;
 
+    &__content {
+        flex-basis: 33.33%;
+    }
+
     &__inner {
         display: flex;
         flex-direction: column;
@@ -28,15 +32,18 @@
         display: flex;
         gap: 30px;
         flex-direction: column;
+        flex-basis: 66.66%;
 
         @include respond-to(md) {
             gap: 24px;
             flex-direction: row;
+            flex-wrap: wrap;
         }
 
-        @include respond-to(lg) {
-            // flex-direction: row;
+        @include respond-to(xl) {
+            align-items: flex-start;
         }
+
     }
 
     &__item {
@@ -45,8 +52,15 @@
         text-align: center;
 
         @include respond-to(md) {
-            padding: 50px 40px;
+            padding: 40px;
             flex-basis: calc(50% - 24px);
+        }
+
+        @include respond-to(xl) {
+            
+            &:nth-child(odd) {
+                margin-top: -70px;
+            }
         }
 
         &__img {
@@ -59,10 +73,10 @@
 
         &__description {
             font-size: var(--fs-7);
-            margin-bottom: 35px;
+            margin-bottom: 20px;
 
             @include respond-to(md) {
-                font-size: var(--fs-6);
+                font-size: var(--fs-7);
             }
         }
     }
