@@ -45,6 +45,7 @@ add_action('wp_body_open', 'frizer_skip_link', 5);
 function frizer_add_template_parts_support() {
   add_theme_support( 'custom-logo' );
   add_theme_support( 'menus' );
+  add_theme_support( 'title-tag' );
 }
 add_action( 'after_setup_theme', 'frizer_add_template_parts_support' );
 
