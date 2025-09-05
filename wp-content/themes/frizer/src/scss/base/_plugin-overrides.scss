@@ -70,3 +70,44 @@
 .wpcf7 form.sent .wpcf7-response-output {
     border-color: var(--c-primary);
 }
+
+// Amelia
+.amelia-v2-booking .am-lite-footer {
+    display: none;
+}
+
+.am-fs-sb {
+    p {
+        color: var(--c-white);
+    }
+}
+
+.amelia-v2-booking #amelia-container .am-fs-sb__step-checker .am-icon-check {
+    background-color: var(--c-greenish-100) !important;
+}
+
+.am-adv-select__popper *,
+.amelia-v2-booking #amelia-container.am-fs__wrapper *,
+#amelia-app-backend-new #amelia-container * {
+    font-family: var(--font-secondary) !important;
+}
+
+.amelia-v2-booking #amelia-container.am-fs__wrapper [class^=am-icon-], 
+.amelia-v2-booking #amelia-container.am-fs__wrapper [class*=" am-icon-"] {
+    font-family: amelia-icons !important;
+}
+
+#amelia-v2-booking-1000.amelia-v2-booking #amelia-container .am-fs__main-footer .am-button {
+    border-radius: 0;
+    text-transform: uppercase;
+    font-family: var(--font-main) !important;
+}
+
+.amelia-v2-booking #amelia-container .am-fs__main-footer .am-button .am-button__inner {
+    font-family: var(--font-main) !important;
+    font-weight: 700;
+}
+
+#amelia-container > div.am-fs-sb > div.am-fs-sb__step-wrapper > div > div > div > div:nth-child(2) {
+    display: none;
+}
