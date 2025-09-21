@@ -29,6 +29,7 @@
 
         @include respond-to(lg) {
             z-index: 2;
+            flex-basis: 50%;
         }
     }
 
@@ -36,11 +37,25 @@
         font-size: var(--fs-2);
         font-weight: 600;
         margin-bottom: 20px;
+
+        @include respond-to(lg) {
+            font-size: var(--fs-h1);
+        }
     }
 
     &__desc {
         font-size: var(--fs-6);
         color: var(--c-neutral-800);
         margin-bottom: 50px;
+
+        @include respond-to(lg) {
+            max-width: 470px;
+        }
+    }
+
+    &__images {
+        @include respond-to(lg) {
+            flex-basis: 50%;
+        }
     }
 }
