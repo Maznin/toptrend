@@ -8,10 +8,13 @@
     &__inner {
         display: flex;
         flex-direction: column;
-        gap: 30px;
+        gap: 50px;
 
         @include respond-to(lg) {
             flex-direction: row;
+        }
+
+        @include respond-to(xl) {
             gap: 25px;
         }
     }
@@ -24,7 +27,7 @@
     &__content {
 
         @include respond-to(lg) {
-            flex-basis: 60%;
+            flex-basis: 50%;
         }
     }
 
@@ -33,7 +36,7 @@
         @include respond-to(lg) {
             display: flex;
             align-items: center;
-            flex-basis: 40%;
+            flex-basis: 50%;
         }
     }
 
