@@ -11,5 +11,6 @@ define('THEME_PATH', get_template_directory());
 require_once THEME_PATH . '/functions/assets.php';
 require_once THEME_PATH . '/functions/setup.php';
 require_once THEME_PATH . '/functions/roles.php';
+require_once THEME_PATH . '/functions/amelia.php';
 require_once THEME_PATH . '/blocks/register-acf-blocks.php';
 
