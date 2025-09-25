@@ -1,4 +1,4 @@
-<section class="services section-padding">
+<section class="services section-padding section-dark">
 	<div class="container services__inner">
 		<span class="section-subtitle-backdrop text-center">
 			<?php _e('Usluge', 'frizer') ?>

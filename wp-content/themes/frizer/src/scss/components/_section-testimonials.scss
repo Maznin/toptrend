@@ -1,8 +1,7 @@
 @use '../abstracts/index' as *;
 
 .testimonials {
-    background-color: var(--c-neutral-50);
-    background-image: url(../img/makaze-pozadina.png);
+    background-color: var(--c-neutral-825);
     background-repeat: no-repeat;
     background-position: bottom right;
 
@@ -26,6 +25,7 @@
 
     &__description {
         font-size: var(--fs-6);
+        color: var(--c-neutral-400) !important;
     }
 
     &__list {
@@ -47,7 +47,7 @@
     }
 
     &__item {
-        background: var(--c-white) url(../img/utisak.png) no-repeat center;
+        background: var(--c-neutral-900) url(../img/utisak.png) no-repeat center;
         padding: 40px 30px;
         text-align: center;
 
@@ -74,6 +74,7 @@
         &__description {
             font-size: var(--fs-7);
             margin-bottom: 20px;
+            color: var(--c-neutral-400) !important;
 
             @include respond-to(md) {
                 font-size: var(--fs-7);

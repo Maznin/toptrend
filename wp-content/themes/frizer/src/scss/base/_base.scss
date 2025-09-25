@@ -3,11 +3,11 @@
 body {
     font-family: "Arimo", sans-serif;
     line-height: 1.3;
-    background-color: var(--c-white);
+    background-color: var(--c-neutral-825);
 }
 
 a {
-    color: var(--c-neutral-900);
+    color: var(--c-white);
     transition: var(--link-color-transition-1);
 }
 

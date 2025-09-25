@@ -28,6 +28,7 @@
             cursor: pointer;
             transition: var(--link-color-transition-1);
             padding: 5px 10px;
+            color: var(--c-neutral-400);
 
             @include respond-to(sm) {
                 padding: 0 10px;

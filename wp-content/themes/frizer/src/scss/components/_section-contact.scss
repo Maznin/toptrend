@@ -1,6 +1,7 @@
 @use '../abstracts/index' as *;
 
 .contact {
+    background-color: var(--c-neutral-825);
     
 
     @include respond-to(lg) {
@@ -59,7 +60,7 @@
 			}
 
             .label {
-                color: var(--c-neutral-600);
+                color: var(--c-neutral-400);
                 margin-bottom: 5px;
             }
 

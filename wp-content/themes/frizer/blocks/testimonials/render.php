@@ -1,4 +1,4 @@
-<section class="testimonials section-padding">
+<section class="testimonials section-padding section-dark">
 	<div class="container testimonials__inner">
 		<div class="testimonials__content">
 			<span class="section-subtitle-backdrop">
