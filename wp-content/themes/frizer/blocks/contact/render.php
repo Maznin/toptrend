@@ -1,7 +1,7 @@
 <?php
-$data = get_field('slideout_modal', 'options');
+$data = get_field('contact_info', 'options');
 $address = $data['address'] ?? '';
-$phone = $data['phone'] ?? '';
+$phones = $data['phones'] ?? '';
 $email = $data['email'] ?? '';
 ?>
 
@@ -15,13 +15,15 @@ $email = $data['email'] ?? '';
 				Kontaktirajte nas ili rezervišite
 			</h2>
 			<div class="contact__info__items">
-				<?php if (!empty($phone)): ?>
+				<?php if (!empty($phones)): ?>
+					<?php foreach ($phones as $phone): ?>
 					<div class="contact__info__item contact__info__item--phone">
 						<div>
 							<div class="label"><?php _e('Pozovite nas', 'frizer'); ?></div>
-							<div class="value"><a href="<?php echo esc_html($phone['url']); ?>"><?php echo esc_html($phone['title']); ?></a></div>
+							<div class="value"><a href="<?php echo esc_html($phone['phone']['url']); ?>"><?php echo esc_html($phone['phone']['title']); ?></a></div>
 						</div>
 					</div>
+					<?php endforeach; ?>
 				<?php endif; ?>
 
 				<?php

@@ -1,5 +1,6 @@
 <?php
-	$services = get_amelia_services(array('category_id' => 3));
+	$cat_id = get_field('cat_id');
+	$services = get_amelia_services(array('category_id' => $cat_id));
 ?>
 
 <section class="pricing-table section-padding">

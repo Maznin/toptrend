@@ -1,9 +1,9 @@
 <?php
-$data = get_field('slideout_modal', 'options');
+$data = get_field('contact_info', 'options');
 $text = $data['text'] ?? '';
 $image = $data['image'] ?? '';
 $address = $data['address'] ?? '';
-$phone = $data['phone'] ?? '';
+$phones = $data['phones'] ?? [];
 $email = $data['email'] ?? '';
 $facebook = $data['facebook_link'] ?? '';
 $instagram = $data['instagram_link'] ?? '';
@@ -33,13 +33,15 @@ $instagram = $data['instagram_link'] ?? '';
         <?php endif; ?>
         <div class="contact-info">
             <h2><?php _e('Kontakt', 'frizer'); ?></h2>
-            <?php if (!empty($phone)): ?>
-                <div class="contact-item contact-item--phone">
-                    <div>
-                        <div class="label"><?php _e('Pozovite nas', 'frizer'); ?></div>
-                        <div class="value"><a href="<?php echo esc_html($phone['url']); ?>"><?php echo esc_html($phone['title']); ?></a></div>
+            <?php if (!empty($phones)): ?>
+                <div class="label phone-label"><?php _e('Pozovite nas', 'frizer'); ?></div>
+                <?php foreach ($phones as $phone): ?>
+                    <div class="contact-item contact-item--phone">
+                        <div>
+                            <div class="value"><a href="<?php echo esc_html($phone['phone']['url']); ?>"><?php echo esc_html($phone['phone']['title']); ?></a></div>
+                        </div>
                     </div>
-                </div>
+                <?php endforeach; ?>
             <?php endif; ?>
 
             <?php

@@ -1,10 +1,10 @@
 <?php
-$data = get_field('slideout_modal', 'options');
+$data = get_field('contact_info', 'options');
 
 // Contact info
 $contacts = [
     'address' => $data['address'] ?? null,
-    'phone'   => $data['phone'] ?? null,
+    'phones'   => $data['phones'] ?? null,
     'email'   => $data['email'] ?? null,
 ];
 
@@ -48,10 +48,20 @@ $socials = [
             <div class="footer__col footer__col--contact">
                 <h5 class="footer__col__title"><?php esc_html_e('Kontakt', 'frizer'); ?></h5>
                 <div class="footer__col__contact">
-                    <?php foreach ($contacts as $type => $item): ?>
-                        <?php if (!empty($item) && !empty($item['url']) && !empty($item['title'])): ?>
+                    <?php if (!empty($contacts['phones'])): ?>
+                        <?php foreach ($contacts['phones'] as $phone): ?>
+                            <?php if (!empty($phone['phone']) && !empty($phone['phone']['url']) && !empty($phone['phone']['title'])): ?>
+                                <div class="contact-item contact-item--phone">
+                                    <div class="value"><a href="<?php echo esc_url($phone['phone']['url']); ?>"><?php echo esc_html($phone['phone']['title']); ?></a></div>
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                    
+                    <?php foreach (['address', 'email'] as $type): ?>
+                        <?php if (!empty($contacts[$type]) && !empty($contacts[$type]['url']) && !empty($contacts[$type]['title'])): ?>
                             <div class="contact-item contact-item--<?php echo esc_attr($type); ?>">
-                                <div class="value"><a href="<?php echo esc_url($item['url']); ?>" <?php echo $type === 'address' ? ' target="_blank"' : ''; ?>><?php echo esc_html($item['title']); ?></a></div>
+                                <div class="value"><a href="<?php echo esc_url($contacts[$type]['url']); ?>" <?php echo $type === 'address' ? ' target="_blank"' : ''; ?>><?php echo esc_html($contacts[$type]['title']); ?></a></div>
                             </div>
                         <?php endif; ?>
                     <?php endforeach; ?>

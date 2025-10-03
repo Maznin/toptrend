@@ -96,17 +96,22 @@
 				margin-bottom: 1.5rem;
 			}
 
+			.label {
+				font-size: var(--fs-9);
+				color: var(--c-neutral-300);
+				font-weight: 500;
+
+				&.phone-label {
+					display: inline-block;
+    				padding-left: 50px;
+				}
+			}
+
 			.contact-item {
 				display: flex;
-				align-items: flex-start;
+				align-items: center;
 				gap: 20px;
-				margin-bottom: 1.5rem;
-
-				.label {
-					font-size: var(--fs-9);
-					color: var(--c-neutral-300);
-					font-weight: 500;
-				}
+				margin-bottom: 1.3rem;
 
 				.value {
 					font-size: 1.1rem;
