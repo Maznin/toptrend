@@ -15,10 +15,10 @@ export function initNavigation() {
   subMenuToggles.forEach(toggle => {
     const subMenu = toggle.querySelector('.sub-menu');
 
-    console.log(toggle);
-    
     if (subMenu && subMenu.classList.contains('sub-menu')) {
       toggle.addEventListener('click', (e) => {
+        // Prevent toggling if clicking inside the submenu
+        if (subMenu.contains(e.target)) return;
         e.preventDefault();
 
         subMenu.classList.toggle('is-open');

@@ -43,6 +43,6 @@
 				<a href="#" class="services__item__link"><?php _e('Saznajte više', 'frizer') ?></a>
 			</div>
 		</div>
-		<a href="#" class="btn services__btn"><?php _e('Pogledajte Cenovnik', 'frizer') ?></a>
+		<a href="/cenovnik-zenske-usluge/" class="btn services__btn"><?php _e('Pogledajte Cenovnik', 'frizer') ?></a>
 	</div>
 </section>
