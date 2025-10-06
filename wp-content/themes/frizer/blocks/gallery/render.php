@@ -25,7 +25,7 @@
 				<?php endforeach; ?>
 			</div>
 			<div class="btn-wrapper text-center">
-				<a href="/galerija/" class="btn btn--secondary"><?php _e('Pogledajte galeriju', 'frizer'); ?></a>
+				<a href="/zenske-frizure/" class="btn btn--secondary"><?php _e('Pogledajte galeriju', 'frizer'); ?></a>
 			</div>
 		<?php endif; ?>
 	</div>

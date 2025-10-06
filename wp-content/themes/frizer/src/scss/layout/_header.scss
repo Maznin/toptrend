@@ -229,6 +229,13 @@
             }
         }
 
+        &.current-menu-item,
+        &.current-menu-parent > {
+            a {
+                color: var(--c-primary);
+            }
+        }
+
         &.menu-item-has-children {
             display: grid;
             grid-template-rows: 0fr 0fr;
@@ -285,6 +292,14 @@
                 @include respond-to(lg) {
                     animation: subMenuFadein 400ms ease-out;
                     display: block;
+                }
+            }
+        }
+
+        &.menu-item-has-children.current-menu-parent {
+            @include respond-to(lg) {
+                &:after {
+                    color: var(--c-primary);
                 }
             }
         }
