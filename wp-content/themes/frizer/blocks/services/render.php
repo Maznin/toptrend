@@ -16,7 +16,6 @@
 				</div>
 				<h4 class="services__item__title"><?php _e('Šišanje', 'frizer') ?></h4>
 				<p class="services__item__description mb-0">Da uvek izgledate savršeno. Muška i ženska šišanja, moderna i klasična, različitim tehnikama</p>
-				<a href="#" class="services__item__link"><?php _e('Saznajte više', 'frizer') ?></a>
 			</div>
 			<div class="services__item">
 				<div class="services__item__img">
@@ -24,7 +23,6 @@
 				</div>
 				<h4 class="services__item__title"><?php _e('Feniranje', 'frizer') ?></h4>
 				<p class="services__item__description mb-0">Da vaša kosa izgleda lepo i zanosno. Sve vrste feniranja, uz upotrenu profesionalnih preparata</p>
-				<a href="#" class="services__item__link"><?php _e('Saznajte više', 'frizer') ?></a>
 			</div>
 			<div class="services__item">
 				<div class="services__item__img">
@@ -32,7 +30,6 @@
 				</div>
 				<h4 class="services__item__title"><?php _e('Farbanje', 'frizer') ?></h4>
 				<p class="services__item__description mb-0">Da osvežite ili promenite boju kose. Od klasičnog farbanja do najmodernijih tehnika bojenja kose</p>
-				<a href="#" class="services__item__link"><?php _e('Saznajte više', 'frizer') ?></a>
 			</div>
 			<div class="services__item">
 				<div class="services__item__img">
@@ -40,7 +37,6 @@
 				</div>
 				<h4 class="services__item__title"><?php _e('Brijanje', 'frizer') ?></h4>
 				<p class="services__item__description mb-0">Za savršeno glatku kožu ili urednu bradu, klasično brijanje, šišanje i oblikovanje brade i brkova, kao i brijanje glave</p>
-				<a href="#" class="services__item__link"><?php _e('Saznajte više', 'frizer') ?></a>
 			</div>
 		</div>
 		<a href="/cenovnik-zenske-usluge/" class="btn services__btn"><?php _e('Pogledajte Cenovnik', 'frizer') ?></a>
