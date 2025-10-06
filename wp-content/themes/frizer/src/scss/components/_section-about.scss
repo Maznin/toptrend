@@ -28,6 +28,12 @@
         }
     }
 
+    &__content {
+        @include respond-to(lg) {
+            max-width: 722px;
+        }
+    }
+
     .btn {
         margin-top: 40px;
     }
