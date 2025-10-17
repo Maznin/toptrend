@@ -59,3 +59,12 @@ add_action('after_setup_theme', 'frizer_register_footer_menu');
  */
 add_filter('wpcf7_autop_or_not', '__return_false');
 
+/**
+ * Preloads the main hero background image for faster display.
+ */
+function frizer_preload_main_hero_bg() {
+    $img_url = get_template_directory_uri() . '/src/img/top-trend-018-uvodna-sekcija.jpg';
+    echo '<link rel="preload" as="image" href="' . esc_url($img_url) . '">';
+}
+add_action('wp_head', 'frizer_preload_main_hero_bg');
+

@@ -30,7 +30,7 @@ $socials = [
                     <img src="<?php echo esc_url(get_template_directory_uri() . '/src/img/top-trend-logo-beo.png'); ?>" width="200" height="58" loading="lazy" alt="<?php esc_attr_e('Top Trend Logo Beo', 'frizer'); ?>">
                 </div>
                 <div class="footer__description">
-                    <p class="mb-0">Frizerski salon Top Trend 018 - spoj modernih tehnika i dugogodišnjeg iskustva.</p>
+                    <p class="mb-0">Frizerski salon Top Trend 018 - spoj modernih tehnika i dugogodišnjeg iskustva</p>
                 </div>
             </div>
             <?php if (has_nav_menu('footer')) : ?>
@@ -72,7 +72,7 @@ $socials = [
                 <div class="footer__col__socials">
                     <?php foreach ($socials as $name => $social): ?>
                         <?php if (!empty($social['url'])): ?>
-                            <a href="<?php echo esc_url($social['url']); ?>" class="socials-item" target="_blank">
+                            <a href="<?php echo esc_url($social['url']); ?>" class="socials-item" aria-label="<?php echo esc_attr($name); ?> icon" target="_blank">
                                 <?php echo $social['icon']; ?>
                             </a>
                         <?php endif; ?>

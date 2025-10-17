@@ -11,9 +11,7 @@
 				Radno Vreme Salona
 			</h2>
 			<p class="working-hours__description">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at erat in quam facilisis
-				ultricies. Donec sed ligula nec enim tincidunt aliquet. Sed euismod, nisi vel consectetur
-				interdum, nisl nisi aliquam nunc, eget ultricies nisi nisl vel nisi.
+				Naša usluga je uvek profesionalna i brza. Top Trend je mesto gde se tradicionalno frizerstvo i moderne usluge spajaju i pruzaju vam iskustvo kakvo zasluzujete.
 			</p>
 			<ul class="working-hours__list">
 				<li class="working-hours__list__item"><span>Ponedeljak</span> <span>09:30 - 20:00</span></li>

@@ -11,7 +11,7 @@
                 ?>
             </div>
             <div class="header__bottom__menu">
-                <button id="mobileMenuToggle" class="mobile-menu-toggle" aria-controls="mainNav" aria-expanded="false">
+                <button id="mobileMenuToggle" class="mobile-menu-toggle" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle mobile navigation">
                     <svg class="hamburger" viewBox="0 0 25 25" width="25" height="25">
                         <rect class="hamburger__top hamburger--line" y="2" width="25" height="3"></rect>
                         <rect class="hamburger__middle hamburger--line" y="11" width="25" height="3"></rect>
@@ -23,7 +23,7 @@
                     ?>
                 </nav>
             </div>
-            <button class="header__bottom__sidebar-toggle" aria-controls="slidingSidebar" aria-expanded="false">
+            <button class="header__bottom__sidebar-toggle" aria-controls="slidingSidebar" aria-expanded="false" aria-label="Toggle navigation">
                 <svg viewBox="0 0 24 24" width="24" height="24">
                     <rect class="sliding-sidebar__top sliding-sidebar--line" y="2" width="24" height="2" rx="2"></rect>
                     <rect class="sliding-sidebar__middle sliding-sidebar--line" y="11" width="24" height="2" rx="2"></rect>

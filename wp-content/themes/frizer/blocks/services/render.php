@@ -39,6 +39,6 @@
 				<p class="services__item__description mb-0">Za savršeno glatku kožu ili urednu bradu, klasično brijanje, šišanje i oblikovanje brade i brkova, kao i brijanje glave</p>
 			</div>
 		</div>
-		<a href="/cenovnik-zenske-usluge/" class="btn services__btn"><?php _e('Pogledajte Cenovnik', 'frizer') ?></a>
+		<a href="/zenske-usluge/" class="btn services__btn"><?php _e('Pogledajte Cenovnik', 'frizer') ?></a>
 	</div>
 </section>

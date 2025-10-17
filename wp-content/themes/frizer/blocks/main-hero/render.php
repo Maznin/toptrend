@@ -3,10 +3,10 @@
 		<div class="hero__content">
 			<span class="hero__subtitle section-subtitle">Dobrodošli u naš salon</span>
 			<h1 class="hero__title">
-				Vreme je da se poigrate sa bojom Vaše kose
+				Za nas ste uvek na prvom mestu
 			</h1>
 			<p class="hero__desc">
-				Mi Vam predlažemo da ne rizikuje kod kuće i da dođete u naš salon Top Trend Tim
+				Mi Vam predlažemo da ne rizikuje kod kuće i da dođete u naš salon Top Trend 018
 			</p>
 			<a href="/zakazivanje/" class="hero__btn btn">
 				Zakažite termin<span class="btn__icon"></span>

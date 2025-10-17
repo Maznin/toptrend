@@ -8,5 +8,6 @@
         "mode": "edit",
         "renderTemplate": "render.php"
     },
-    "supports": {}
+    "supports": {},
+    "viewStyle": [ "file:./style.css" ]
 }

@@ -11,7 +11,7 @@
 @use 'layout/footer';
 @use 'layout/subpage-hero';
 
-@use 'components/section-hero';
+// @use 'components/section-hero'; // css is added in hero block style.css
 @use 'components/section-about';
 @use 'components/section-services';
 @use 'components/section-working-hours';
