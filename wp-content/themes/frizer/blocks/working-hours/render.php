@@ -19,7 +19,7 @@
 				<li class="working-hours__list__item"><span>Sreda</span> <span>09:30 - 20:00</span></li>
 				<li class="working-hours__list__item"><span>Četvrtak</span> <span>09:30 - 20:00</span></li>
 				<li class="working-hours__list__item"><span>Petak</span> <span>09:30 - 20:00</span></li>
-				<li class="working-hours__list__item"><span>Subota</span> <span>09:30 - 16:00</span></li>
+				<li class="working-hours__list__item"><span>Subota</span> <span>09:00 - 16:00</span></li>
 				<li class="working-hours__list__item"><span>Nedelja</span> <span>Zatvoreno</span></li>
 			</ul>
 			<a href="/zakazivanje/" class="btn btn--secondary"><?php _e('Zakaži Termin', 'frizer') ?></a>
