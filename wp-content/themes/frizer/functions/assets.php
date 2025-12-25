@@ -35,9 +35,3 @@ function frizer_remove_gutenberg_styles() {
     wp_deregister_style('core-block-supports');
 }
 add_action('wp_enqueue_scripts', 'frizer_remove_gutenberg_styles', 100);
-
-
-
-
-
-

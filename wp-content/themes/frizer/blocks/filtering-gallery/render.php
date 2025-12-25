@@ -1,16 +1,25 @@
-
 <?php
 if (!have_rows('gallery')) {
 	return;
 }
 
-$filters = [
-	'all' => 'Sve',
-	'sisanje' => 'Šišanje',
-	'feniranje' => 'Feniranje',
-	'farbanje' => 'Farbanje',
-	'frizure' => 'Frizure',
-];
+$data = get_field('gallery_filters', 'options');
+
+// echo '<pre style="color:white;">';
+// print_r($data);
+// echo '</pre>';
+
+
+$filters = ['all' => 'Sve'];
+
+if (is_array($data)) {
+	foreach ($data as $item) {
+		if (isset($item['category_name_clean'], $item['category_name'])) {
+			$filters[$item['category_name_clean']] = $item['category_name'];
+		}
+	}
+}
+
 ?>
 
 <section class="filtering-gallery section-padding">
@@ -41,11 +50,11 @@ $filters = [
 					<div class="filtr-item" data-category="<?php echo esc_attr($filter); ?>" data-sort="value">
 						<a href="<?php echo esc_url($img['url']); ?>" class="animated-thumb" data-fancybox="filtering-gallery" <?php echo is_admin() ? 'style="pointer-events: none;"' : ""; ?>>
 							<img loading="lazy"
-								 decoding="async"
-								 width="<?php echo esc_attr($img['width']); ?>"
-								 height="<?php echo esc_attr($img['height']); ?>"
-								 src="<?php echo esc_url($img['url']); ?>"
-								 alt="<?php echo esc_attr($img['alt']); ?>" />
+								decoding="async"
+								width="<?php echo esc_attr($img['width']); ?>"
+								height="<?php echo esc_attr($img['height']); ?>"
+								src="<?php echo esc_url($img['url']); ?>"
+								alt="<?php echo esc_attr($img['alt']); ?>" />
 						</a>
 					</div>
 				<?php endwhile; ?>

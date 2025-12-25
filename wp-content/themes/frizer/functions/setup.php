@@ -68,3 +68,55 @@ function frizer_preload_main_hero_bg() {
 }
 add_action('wp_head', 'frizer_preload_main_hero_bg');
 
+add_action('wp_head', function () {
+  if (is_admin()) return;
+
+  // Try to use your site’s logo from the Customizer
+  $logo_id  = get_theme_mod('custom_logo');
+  $logo_url = $logo_id ? wp_get_attachment_image_url($logo_id, 'full') : '';
+
+  $data = [
+    "@context" => "https://schema.org",
+    "@type" => "HairSalon",
+    "name" => get_bloginfo('name'),
+    "url" => home_url('/'),
+    "image" => array_values(array_filter([$logo_url])),
+    "logo" => $logo_url,
+    "telephone" => "+381-60-032-0705",
+    "address" => [
+      "@type" => "PostalAddress",
+      "streetAddress" => "Jugovićeva 1 (Lokal 7)",
+      "addressLocality" => "Niš",                  
+      "addressRegion" => "RS",
+      "postalCode" => "18000",
+      "addressCountry" => "RS"
+    ],
+    "geo" => [
+      "@type" => "GeoCoordinates",
+      "latitude" => 43.31622080401302,
+      "longitude" => 21.89004935855904
+    ],
+    "openingHoursSpecification" => [
+      [
+        "@type" => "OpeningHoursSpecification",
+        "dayOfWeek" => ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens" => "09:30",
+        "closes" => "20:00"
+      ],
+      [
+        "@type" => "OpeningHoursSpecification",
+        "dayOfWeek" => "Saturday",
+        "opens" => "09:00",
+        "closes" => "16:00"
+      ]
+      // Sunday closed → omit or leave out that day
+    ],
+    "sameAs" => [
+      "https://www.facebook.com/profile.php?id=100063556884780#",
+      "https://www.instagram.com/top_trend_018/"
+    ],
+    "hasMap" => "https://maps.google.com/?q=43.31622080401302,21.89004935855904"
+  ];
+
+  echo '<script type="application/ld+json">'.wp_json_encode($data, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE).'</script>';
+});
