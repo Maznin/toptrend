@@ -45,6 +45,12 @@
         max-width: 100%;
         width: calc(100% - 60px);
     }
+
+    &--full-mobile {
+       @include respond-to-down(sm) {
+            width: 100%;
+        }
+    }
 }
 
 .section-subtitle {

@@ -3,9 +3,11 @@ import { initSlideout } from './modules/slideout-modal.js';
 import { onScreenMax, onScreenMin } from './modules/utils.js';
 import { onFirstUserInteraction } from './modules/user-interaction-init.js';
 import { fancyBoxGallery } from './modules/fancybox.js';
+import { headerBanner } from './modules/headerBanner.js';
 
 function initializeScript() {
   fancyBoxGallery();
+  headerBanner();
 
   onScreenMin(769, () => {
     initSlideout();

@@ -10,6 +10,9 @@
 <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
     <header class="header" role="banner">
+        <?php if (get_field('header_banner', 'options')): ?>
+            <?php get_template_part('parts/header-banner'); ?>
+        <?php endif; ?>
         <!-- Header Top -->
         <?php get_template_part('parts/header-top'); ?>
         <!-- Header Bottom -->
