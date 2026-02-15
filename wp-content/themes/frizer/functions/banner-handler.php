@@ -13,7 +13,6 @@ function frizer_banner_handler_enabled() {
         return true;
     }
 
-    error_log('header_banner_repeat: ' . var_export(get_field('header_banner_repeat', 'options'), true));
     return !get_field('header_banner_repeat', 'options');
 }
 
