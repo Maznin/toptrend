@@ -39,6 +39,9 @@ if ($banner_content && !$hide_banner_on_current_page && !$banner_dismissed): ?>
             <?php if ($banner_cta_link): ?>
             <a href="<?php echo esc_url($banner_cta_link['url']); ?>" class="header__banner__cta">
                 <?php echo esc_html($banner_cta_link['title']); ?>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                    <path d="M13.233 16.457a.75.75 0 1 0 1.034 1.086l-1.034-1.086Zm6.284-3.914a.75.75 0 1 0-1.034-1.086l1.034 1.086Zm-1.034 0a.75.75 0 1 0 1.034-1.086l-1.034 1.086Zm-4.216-6.086a.75.75 0 1 0-1.034 1.086l1.034-1.086ZM19 12.75a.75.75 0 0 0 0-1.5v1.5Zm-14-1.5a.75.75 0 0 0 0 1.5v-1.5Zm9.267 6.293 5.25-5-1.034-1.086-5.25 5 1.034 1.086Zm5.25-6.086-5.25-5-1.034 1.086 5.25 5 1.034-1.086ZM19 11.25H5v1.5h14v-1.5Z"/>
+                </svg>
             </a>
             <?php endif; ?>
 

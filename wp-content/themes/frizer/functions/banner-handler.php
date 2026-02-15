@@ -2,11 +2,21 @@
 
 // Handle header banner dismissal (session-based).
 
-add_action('init', function () {
-    if (!session_id()) {
-        session_start();
+function frizer_start_session_if_needed() {
+    if (session_id()) {
+        return;
     }
-}, 1);
+
+    if (headers_sent()) {
+        return;
+    }
+
+    session_start();
+}
+
+add_action('plugins_loaded', function () {
+    frizer_start_session_if_needed();
+}, 0);
 
 function frizer_banner_handler_enabled() {
     if (!function_exists('get_field')) {
@@ -21,9 +31,7 @@ add_action('wp_ajax_nopriv_dismiss_banner', 'frizer_dismiss_banner');
 
 function frizer_dismiss_banner() {
     if (frizer_banner_handler_enabled()) {
-        if (!session_id()) {
-            session_start();
-        }
+        frizer_start_session_if_needed();
 
         $_SESSION['banner_dismissed'] = true;
     }
@@ -34,9 +42,7 @@ function frizer_dismiss_banner() {
 add_action('init', function () {
     if (isset($_GET['dismiss_banner']) && $_GET['dismiss_banner'] === '1') {
         if (frizer_banner_handler_enabled()) {
-            if (!session_id()) {
-                session_start();
-            }
+            frizer_start_session_if_needed();
 
             $_SESSION['banner_dismissed'] = true;
         }

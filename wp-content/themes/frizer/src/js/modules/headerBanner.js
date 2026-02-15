@@ -4,14 +4,7 @@ export function headerBanner() {
     
     // Show banner with slide-down animation
     banner.classList.add('header__banner--visible');
-    // banner.style.transform = 'translateY(-100%)';
-    // banner.style.transition = 'transform 0.5s ease-out';
-    
-    // Trigger slide-down animation
-    // requestAnimationFrame(() => {
-    //     banner.style.transform = 'translateY(0)';
-    // });
-    
+
     // Close button functionality
     const closeBtn = banner.querySelector('.header__banner__close');
     if (closeBtn) {
@@ -21,7 +14,6 @@ export function headerBanner() {
     }
 
     function hideBanner() {
-        banner.style.transform = 'translateY(-100%)';
         setTimeout(() => {
             banner.classList.remove('header__banner--visible');
             banner.classList.add('header__banner--hidden');
