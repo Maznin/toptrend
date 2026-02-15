@@ -7,7 +7,6 @@ import { headerBanner } from './modules/headerBanner.js';
 
 function initializeScript() {
   fancyBoxGallery();
-  headerBanner();
 
   onScreenMin(769, () => {
     initSlideout();
@@ -17,4 +16,5 @@ function initializeScript() {
   });
 }
 
+headerBanner();
 onFirstUserInteraction(initializeScript);
