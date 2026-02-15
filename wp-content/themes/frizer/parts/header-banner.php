@@ -5,8 +5,9 @@ $banner_cta_link = get_field('header_banner_link', 'options');
 
 $banner_repeat = function_exists('get_field') ? (bool) get_field('header_banner_repeat', 'options') : false;
 $banner_dismissed = false;
-if (!$banner_repeat && !empty($_SESSION['banner_dismissed'])) {
-    $banner_dismissed = true;
+if (!$banner_repeat) {
+    $banner_dismissed = !empty($_SESSION['banner_dismissed'])
+        || (!empty($_COOKIE['banner_dismissed']) && $_COOKIE['banner_dismissed'] === '1');
 }
 
 $hide_banner_on_current_page = false;

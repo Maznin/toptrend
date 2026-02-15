@@ -33,7 +33,13 @@ function frizer_dismiss_banner() {
     if (frizer_banner_handler_enabled()) {
         frizer_start_session_if_needed();
 
-        $_SESSION['banner_dismissed'] = true;
+        if (session_id()) {
+            $_SESSION['banner_dismissed'] = true;
+        }
+
+        if (!headers_sent()) {
+            setcookie('banner_dismissed', '1', 0, '/');
+        }
     }
 
     wp_send_json_success(['message' => 'Banner dismissed']);
@@ -44,7 +50,13 @@ add_action('init', function () {
         if (frizer_banner_handler_enabled()) {
             frizer_start_session_if_needed();
 
-            $_SESSION['banner_dismissed'] = true;
+            if (session_id()) {
+                $_SESSION['banner_dismissed'] = true;
+            }
+
+            if (!headers_sent()) {
+                setcookie('banner_dismissed', '1', 0, '/');
+            }
         }
 
         $redirect_url = remove_query_arg('dismiss_banner');
