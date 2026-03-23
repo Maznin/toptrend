@@ -43,7 +43,7 @@ $email = $data['email'] ?? '';
 					<div class="contact__info__item contact__info__item--address">
 						<div>
 							<div class="label"><?php _e('Adresa', 'frizer'); ?></div>
-							<div class="value"><a href="<?php echo esc_html($address['url']); ?>" target="_blank"><?php echo esc_html($address['title']); ?></a></div>
+							<div class="value"><a href="<?php echo esc_html($address['url']); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html($address['title']); ?></a></div>
 						</div>
 					</div>
 				<?php endif; ?>

@@ -1,22 +1,35 @@
 // user-interaction-init.js
-// Initializes a callback after the first user interaction (click, scroll, keydown, mousemove, or touchstart)
+// Initializes a callback after the first meaningful user interaction.
+// Uses early events (pointerdown/touchstart) so click handlers are attached before click fires.
 
 export function onFirstUserInteraction(callback) {
   let initialized = false;
-  function handler() {
-    if (!initialized) {
-      callback();
-      initialized = true;
-      window.removeEventListener('click', handler);
-      window.removeEventListener('scroll', handler);
-      window.removeEventListener('keydown', handler);
-      window.removeEventListener('mousemove', handler);
-      window.removeEventListener('touchstart', handler);
-    }
+
+  const events = [
+    { name: 'pointerdown', options: { capture: true, passive: true } },
+    { name: 'touchstart', options: { capture: true, passive: true } },
+    { name: 'keydown', options: { capture: true } },
+    { name: 'scroll', options: { passive: true } },
+    { name: 'mousemove', options: { passive: true } },
+  ];
+
+  function removeListeners() {
+    events.forEach(({ name, options }) => {
+      window.removeEventListener(name, handler, options);
+    });
   }
-  window.addEventListener('click', handler);
-  window.addEventListener('scroll', handler);
-  window.addEventListener('keydown', handler);
-  window.addEventListener('mousemove', handler);
-  window.addEventListener('touchstart', handler);
+
+  function handler() {
+    if (initialized) {
+      return;
+    }
+
+    initialized = true;
+    callback();
+    removeListeners();
+  }
+
+  events.forEach(({ name, options }) => {
+    window.addEventListener(name, handler, options);
+  });
 }

@@ -1,3 +1,8 @@
+<?php
+$pricing_page = get_page_by_path('zenske-usluge');
+$pricing_url = $pricing_page ? get_permalink($pricing_page) : home_url('/zenske-usluge/');
+?>
+
 <section class="services section-padding section-dark">
 	<div class="container services__inner">
 		<span class="section-subtitle-backdrop text-center">
@@ -39,6 +44,6 @@
 				<p class="services__item__description mb-0">Za savršeno glatku kožu ili urednu bradu, klasično brijanje, šišanje i oblikovanje brade i brkova, kao i brijanje glave</p>
 			</div>
 		</div>
-		<a href="/zenske-usluge/" class="btn services__btn"><?php _e('Pogledajte Cenovnik', 'frizer') ?></a>
+		<a href="<?php echo esc_url($pricing_url); ?>" class="btn services__btn"><?php _e('Pogledajte Cenovnik', 'frizer') ?></a>
 	</div>
 </section>

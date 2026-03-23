@@ -61,7 +61,7 @@ $socials = [
                     <?php foreach (['address', 'email'] as $type): ?>
                         <?php if (!empty($contacts[$type]) && !empty($contacts[$type]['url']) && !empty($contacts[$type]['title'])): ?>
                             <div class="contact-item contact-item--<?php echo esc_attr($type); ?>">
-                                <div class="value"><a href="<?php echo esc_url($contacts[$type]['url']); ?>" <?php echo $type === 'address' ? ' target="_blank"' : ''; ?>><?php echo esc_html($contacts[$type]['title']); ?></a></div>
+                                <div class="value"><a href="<?php echo esc_url($contacts[$type]['url']); ?>" <?php echo $type === 'address' ? ' target="_blank" rel="noopener noreferrer"' : ''; ?>><?php echo esc_html($contacts[$type]['title']); ?></a></div>
                             </div>
                         <?php endif; ?>
                     <?php endforeach; ?>
@@ -72,7 +72,7 @@ $socials = [
                 <div class="footer__col__socials">
                     <?php foreach ($socials as $name => $social): ?>
                         <?php if (!empty($social['url'])): ?>
-                            <a href="<?php echo esc_url($social['url']); ?>" class="socials-item" aria-label="<?php echo esc_attr($name); ?> icon" target="_blank">
+                            <a href="<?php echo esc_url($social['url']); ?>" class="socials-item" aria-label="<?php echo esc_attr($name); ?> icon" target="_blank" rel="noopener noreferrer">
                                 <?php echo $social['icon']; ?>
                             </a>
                         <?php endif; ?>

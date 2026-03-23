@@ -1,3 +1,8 @@
+<?php
+$booking_page = get_page_by_path('zakazivanje');
+$booking_url = $booking_page ? get_permalink($booking_page) : home_url('/zakazivanje/');
+?>
+
 <section class="hero">
 	<div class="container hero__inner">
 		<div class="hero__content">
@@ -8,7 +13,7 @@
 			<p class="hero__desc">
 				Mi Vam predlažemo da ne rizikujete kod kuće i da dođete u naš salon Top Trend 018
 			</p>
-			<a href="/zakazivanje/" class="hero__btn btn">
+			<a href="<?php echo esc_url($booking_url); ?>" class="hero__btn btn">
 				Zakažite termin<span class="btn__icon"></span>
 			</a>
 		</div>

@@ -50,7 +50,10 @@ function frizer_add_template_parts_support() {
 add_action( 'after_setup_theme', 'frizer_add_template_parts_support' );
 
 function frizer_register_footer_menu() {
-  register_nav_menu('footer', __('Footer Menu', 'frizer'));
+  register_nav_menus([
+    'main-menu' => __('Main Menu', 'frizer'),
+    'footer' => __('Footer Menu', 'frizer'),
+  ]);
 }
 add_action('after_setup_theme', 'frizer_register_footer_menu');
 

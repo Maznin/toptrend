@@ -1,5 +1,7 @@
 <?php
 	$gallery = get_field('gallery');
+	$gallery_page = get_page_by_path('zenske-frizure');
+	$gallery_url = $gallery_page ? get_permalink($gallery_page) : home_url('/zenske-frizure/');
 ?>
 
 <section class="gallery section-padding section-dark">
@@ -25,7 +27,7 @@
 				<?php endforeach; ?>
 			</div>
 			<div class="btn-wrapper text-center">
-				<a href="/zenske-frizure/" class="btn btn--secondary"><?php _e('Pogledajte galeriju', 'frizer'); ?></a>
+				<a href="<?php echo esc_url($gallery_url); ?>" class="btn btn--secondary"><?php _e('Pogledajte galeriju', 'frizer'); ?></a>
 			</div>
 		<?php endif; ?>
 	</div>

@@ -61,21 +61,21 @@ $instagram = $data['instagram_link'] ?? '';
                 <div class="contact-item contact-item--address">
                     <div>
                         <div class="label"><?php _e('Adresa', 'frizer'); ?></div>
-                        <div class="value"><a href="<?php echo esc_html($address['url']); ?>" target="_blank"><?php echo esc_html($address['title']); ?></a></div>
+                        <div class="value"><a href="<?php echo esc_html($address['url']); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html($address['title']); ?></a></div>
                     </div>
                 </div>
             <?php endif; ?>
         </div>
         <div class="socials">
             <?php if (!empty($facebook)): ?>
-                <a href="<?php echo esc_url($facebook['url']); ?>" target="_blank">
+                <a href="<?php echo esc_url($facebook['url']); ?>" target="_blank" rel="noopener noreferrer">
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 32 32">
                         <path d="m21.95 5.005-3.306-.004c-3.206 0-5.277 2.124-5.277 5.415v2.495H10.05v4.515h3.317l-.004 9.575h4.641l.004-9.575h3.806l-.003-4.514h-3.803v-2.117c0-1.018.241-1.533 1.566-1.533l2.366-.001.01-4.256z" />
                     </svg>
                 </a>
             <?php endif; ?>
             <?php if (!empty($instagram)): ?>
-                <a href="<?php echo esc_url($instagram['url']); ?>" target="_blank">
+                <a href="<?php echo esc_url($instagram['url']); ?>" target="_blank" rel="noopener noreferrer">
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24">
                         <g fill="#fff">
                             <path fill-rule="evenodd" d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" />
