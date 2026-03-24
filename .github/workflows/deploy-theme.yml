@@ -66,10 +66,29 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -p "${{ secrets.SSH_PORT }}" -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
 
-      - name: Ensure remote theme directory exists
+      - name: Preflight remote deploy checks
         run: |
+          remote_parent_dir="$(dirname "${{ secrets.DEPLOY_PATH }}")"
+
           ssh -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
-            "mkdir -p '${{ secrets.DEPLOY_PATH }}'"
+            "set -eu
+            command -v rsync >/dev/null 2>&1 || { echo 'rsync is not available on the remote server'; exit 1; }
+            test -d '$remote_parent_dir' || { echo 'Deploy parent directory does not exist: $remote_parent_dir'; exit 1; }
+            mkdir -p '${{ secrets.DEPLOY_PATH }}'
+            test -w '${{ secrets.DEPLOY_PATH }}' || { echo 'Deploy path is not writable: ${{ secrets.DEPLOY_PATH }}'; exit 1; }
+            echo 'Remote deploy checks passed for: ${{ secrets.DEPLOY_PATH }}'"
+
+      - name: Generate deploy marker
+        run: |
+          cat > wp-content/themes/frizer/deploy-info.txt <<EOF
+          environment=Development
+          branch=${GITHUB_REF_NAME}
+          deploy_ref=${{ github.event_name == 'workflow_dispatch' && github.event.inputs.deploy_ref || github.ref_name }}
+          commit_sha=${GITHUB_SHA}
+          workflow=${GITHUB_WORKFLOW}
+          run_number=${GITHUB_RUN_NUMBER}
+          deployed_at=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          EOF
 
       - name: Deploy theme to development
         run: |
@@ -124,10 +143,29 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -p "${{ secrets.SSH_PORT }}" -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
 
-      - name: Ensure remote theme directory exists
+      - name: Preflight remote deploy checks
         run: |
+          remote_parent_dir="$(dirname "${{ secrets.DEPLOY_PATH }}")"
+
           ssh -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
-            "mkdir -p '${{ secrets.DEPLOY_PATH }}'"
+            "set -eu
+            command -v rsync >/dev/null 2>&1 || { echo 'rsync is not available on the remote server'; exit 1; }
+            test -d '$remote_parent_dir' || { echo 'Deploy parent directory does not exist: $remote_parent_dir'; exit 1; }
+            mkdir -p '${{ secrets.DEPLOY_PATH }}'
+            test -w '${{ secrets.DEPLOY_PATH }}' || { echo 'Deploy path is not writable: ${{ secrets.DEPLOY_PATH }}'; exit 1; }
+            echo 'Remote deploy checks passed for: ${{ secrets.DEPLOY_PATH }}'"
+
+      - name: Generate deploy marker
+        run: |
+          cat > wp-content/themes/frizer/deploy-info.txt <<EOF
+          environment=production
+          branch=${GITHUB_REF_NAME}
+          deploy_ref=${{ github.event_name == 'workflow_dispatch' && github.event.inputs.deploy_ref || github.ref_name }}
+          commit_sha=${GITHUB_SHA}
+          workflow=${GITHUB_WORKFLOW}
+          run_number=${GITHUB_RUN_NUMBER}
+          deployed_at=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          EOF
 
       - name: Deploy theme to production
         run: |
