@@ -4,8 +4,6 @@
 
 export function onFirstUserInteraction(callback) {
 
-  console.log('onFirstUserInteraction initialized');
-
   let initialized = false;
 
   const events = [
