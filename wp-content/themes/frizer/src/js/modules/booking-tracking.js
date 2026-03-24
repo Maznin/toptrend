@@ -1,4 +1,4 @@
-function emitTrackingEvent(eventName, params = {}) {
+function emitTrackingEvent(eventName, params = {}, options = {}) {
   const debugModeEnabled = (() => {
     try {
       const queryParams = new URLSearchParams(window.location.search);
@@ -19,7 +19,16 @@ function emitTrackingEvent(eventName, params = {}) {
   }
 
   if (typeof window.gtag === 'function') {
-    window.gtag('event', eventName, payload);
+    const eventPayload = {
+      ...payload,
+    };
+
+    if (typeof options.eventCallback === 'function') {
+      eventPayload.event_callback = options.eventCallback;
+      eventPayload.event_timeout = options.eventTimeout || 1200;
+    }
+
+    window.gtag('event', eventName, eventPayload);
   } else {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
@@ -46,6 +55,35 @@ function normalizeText(value) {
   return (value || '')
     .replace(/\s+/g, ' ')
     .trim();
+}
+
+function containsBookingSuccessText(text) {
+  if (!text) {
+    return false;
+  }
+
+  const normalized = normalizeText(text).toLowerCase();
+  const hasSuccessSignal =
+    normalized.includes('thank you') ||
+    normalized.includes('success') ||
+    normalized.includes('confirmed') ||
+    normalized.includes('successfully booked') ||
+    normalized.includes('appointment confirmed') ||
+    normalized.includes('hvala') ||
+    normalized.includes('uspes') ||
+    normalized.includes('uspes') ||
+    normalized.includes('potvrdjen') ||
+    normalized.includes('potvrden');
+  const hasBookingSignal =
+    normalized.includes('reservation') ||
+    normalized.includes('booking') ||
+    normalized.includes('appointment') ||
+    normalized.includes('booked') ||
+    normalized.includes('rezerv') ||
+    normalized.includes('zakaz') ||
+    normalized.includes('termin');
+
+  return normalized.includes('thank you') || normalized.includes('successfully booked') || (hasSuccessSignal && hasBookingSignal);
 }
 
 function createTrackedEventGuard() {
@@ -104,36 +142,58 @@ function isCompletionState(container) {
     '[class*="congrat"]',
     '[class*="confirm"]',
     '.am-notification',
+    '[aria-live]',
   ];
 
   for (const selector of successSelectors) {
     const nodes = container.querySelectorAll(selector);
 
     for (const node of nodes) {
-      const text = normalizeText(node.textContent).toLowerCase();
-
-      if (!text) {
-        continue;
-      }
-
-      if (
-        text.includes('thank you') ||
-        text.includes('success') ||
-        text.includes('confirmed') ||
-        text.includes('reservation') ||
-        text.includes('booked') ||
-        text.includes('hvala') ||
-        text.includes('uspe') ||
-        text.includes('rezervacija') ||
-        text.includes('zakazan') ||
-        text.includes('potvr')
-      ) {
+      if (containsBookingSuccessText(node.textContent)) {
         return true;
       }
     }
   }
 
-  return false;
+  return containsBookingSuccessText(container.textContent);
+}
+
+function getSubmitButtonFromTarget(target, container) {
+  if (!target || !container) {
+    return null;
+  }
+
+  const button = target.closest('button, [role="button"]');
+
+  if (!button || !container.contains(button)) {
+    return null;
+  }
+
+  return getSubmitButton(container) === button ? button : null;
+}
+
+function shouldDelayNavigation(event, cta) {
+  if (!cta || cta.tagName !== 'A') {
+    return false;
+  }
+
+  if (cta.target && cta.target !== '_self') {
+    return false;
+  }
+
+  if (event.defaultPrevented || event.button !== 0) {
+    return false;
+  }
+
+  return !(event.metaKey || event.ctrlKey || event.shiftKey || event.altKey);
+}
+
+function navigateToCta(cta) {
+  const href = cta?.getAttribute('href');
+
+  if (href) {
+    window.location.assign(href);
+  }
 }
 
 function getSubmitButton(container) {
@@ -164,24 +224,26 @@ function getSubmitButton(container) {
 function observeAmeliaWidget() {
   const hasSent = createTrackedEventGuard();
   let lastStep = '';
-  let submitBound = false;
+  let hasSubmitted = false;
 
   function bindSubmitTracking(container) {
-    if (submitBound) {
+    if (container.dataset.bookingSubmitTrackingAttached === 'true') {
       return;
     }
 
-    const submitButton = getSubmitButton(container);
+    container.dataset.bookingSubmitTrackingAttached = 'true';
+    container.addEventListener('click', (event) => {
+      const submitButton = getSubmitButtonFromTarget(event.target, container);
 
-    if (!submitButton) {
-      return;
-    }
+      if (!submitButton) {
+        return;
+      }
 
-    submitBound = true;
-    submitButton.addEventListener('click', () => {
+      hasSubmitted = true;
       emitTrackingEvent('booking_submit_click', {
         booking_provider: 'amelia',
         booking_step: getActiveAmeliaStep(container) || 'unknown',
+        booking_label: normalizeText(submitButton.textContent),
       });
     });
   }
@@ -209,7 +271,7 @@ function observeAmeliaWidget() {
 
     bindSubmitTracking(container);
 
-    if (isCompletionState(container) && !hasSent('booking_complete')) {
+    if (hasSubmitted && isCompletionState(container) && !hasSent('booking_complete')) {
       emitTrackingEvent('booking_completed', {
         booking_provider: 'amelia',
         booking_step: lastStep || 'completed',
@@ -263,11 +325,35 @@ function initBookingCtaTracking() {
       return;
     }
 
-    emitTrackingEvent('booking_cta_click', {
+    const payload = {
       booking_source: cta.dataset.bookingSource || 'unknown',
       booking_destination: cta.getAttribute('href') || '',
       booking_label: normalizeText(cta.textContent),
+    };
+
+    if (!shouldDelayNavigation(event, cta)) {
+      emitTrackingEvent('booking_cta_click', payload);
+      return;
+    }
+
+    event.preventDefault();
+
+    let hasNavigated = false;
+    const navigate = () => {
+      if (hasNavigated) {
+        return;
+      }
+
+      hasNavigated = true;
+      navigateToCta(cta);
+    };
+
+    emitTrackingEvent('booking_cta_click', payload, {
+      eventCallback: navigate,
+      eventTimeout: 1200,
     });
+
+    window.setTimeout(navigate, 300);
   });
 }
 
