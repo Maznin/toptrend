@@ -119,6 +119,16 @@ jobs:
             "wp-content/themes/frizer/" \
             "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}/"
 
+      - name: Purge LiteSpeed Cache
+        if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.dry_run != 'true' }}
+        continue-on-error: true
+        run: |
+          DEPLOY_PATH="${{ secrets.DEPLOY_PATH }}"
+          DEPLOY_PATH="${DEPLOY_PATH%/}"
+          WP_ROOT="${DEPLOY_PATH%/wp-content/themes/frizer}"
+          ssh -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
+            "wp litespeed-purge all --path='${WP_ROOT}' --quiet && echo 'LiteSpeed Cache purged' || echo 'Cache purge skipped (WP-CLI unavailable or plugin inactive)'"
+
   deploy-production:
     if: (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/production')) || (github.event_name == 'workflow_dispatch' && github.event.inputs.target_environment == 'Production')
     runs-on: ubuntu-latest
@@ -203,3 +213,13 @@ jobs:
             -e "ssh -p ${{ secrets.SSH_PORT }}" \
             "wp-content/themes/frizer/" \
             "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}/"
+
+      - name: Purge LiteSpeed Cache
+        if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.dry_run != 'true' }}
+        continue-on-error: true
+        run: |
+          DEPLOY_PATH="${{ secrets.DEPLOY_PATH }}"
+          DEPLOY_PATH="${DEPLOY_PATH%/}"
+          WP_ROOT="${DEPLOY_PATH%/wp-content/themes/frizer}"
+          ssh -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
+            "wp litespeed-purge all --path='${WP_ROOT}' --quiet && echo 'LiteSpeed Cache purged' || echo 'Cache purge skipped (WP-CLI unavailable or plugin inactive)'"
