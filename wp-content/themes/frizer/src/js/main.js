@@ -4,6 +4,7 @@ import { onScreenMax, onScreenMin } from './modules/utils.js';
 import { onFirstUserInteraction } from './modules/user-interaction-init.js';
 import { fancyBoxGallery } from './modules/fancybox.js';
 import { headerBanner } from './modules/headerBanner.js';
+import { initBookingTracking } from './modules/booking-tracking.js';
 
 function initializeScript() {
   fancyBoxGallery();
@@ -16,5 +17,6 @@ function initializeScript() {
   });
 }
 
+initBookingTracking();
 headerBanner();
 onFirstUserInteraction(initializeScript);

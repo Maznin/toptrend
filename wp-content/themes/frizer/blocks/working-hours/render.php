@@ -27,7 +27,7 @@ $booking_url = $booking_page ? get_permalink($booking_page) : home_url('/zakaziv
 				<li class="working-hours__list__item"><span>Subota</span> <span>09:00 - 16:00</span></li>
 				<li class="working-hours__list__item"><span>Nedelja</span> <span>Zatvoreno</span></li>
 			</ul>
-			<a href="<?php echo esc_url($booking_url); ?>" class="btn btn--secondary"><?php _e('Zakaži Termin', 'frizer') ?></a>
+			<a href="<?php echo esc_url($booking_url); ?>" class="btn btn--secondary" data-booking-cta data-booking-source="working-hours"><?php _e('Zakaži Termin', 'frizer') ?></a>
 		</div>
 		<div class="working-hours__images">
 			<img src="<?php echo get_template_directory_uri(); ?>/src/img/top-trend-zakazivanje.jpg" alt="Kalendar za zakazivanje" class="working-hours__img" />

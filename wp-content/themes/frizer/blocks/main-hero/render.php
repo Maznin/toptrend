@@ -13,7 +13,7 @@ $booking_url = $booking_page ? get_permalink($booking_page) : home_url('/zakaziv
 			<p class="hero__desc">
 				Mi Vam predlažemo da ne rizikujete kod kuće i da dođete u naš salon Top Trend 018
 			</p>
-			<a href="<?php echo esc_url($booking_url); ?>" class="hero__btn btn">
+			<a href="<?php echo esc_url($booking_url); ?>" class="hero__btn btn" data-booking-cta data-booking-source="hero">
 				Zakažite termin<span class="btn__icon"></span>
 			</a>
 		</div>
