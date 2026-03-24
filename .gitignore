@@ -14,6 +14,9 @@ node_modules/
 # ignore everything in the root except the "wp-content" directory and  .gitignore file.
 /*
 !.gitignore
+!.github/
+!.github/workflows/
+!.github/workflows/deploy-theme.yml
 !wp-content/
 
 # project specific track/ignore
