@@ -18,11 +18,16 @@ on:
         type: choice
         options:
           - Development
-          - production
+          - Production
       deploy_ref:
         description: 'Optional branch, tag, or commit SHA to deploy (leave empty for current ref)'
         required: false
         type: string
+      dry_run:
+        description: 'Preview changes without uploading files'
+        required: true
+        default: false
+        type: boolean
 
 concurrency:
   group: deploy-theme-${{ github.ref }}
@@ -92,7 +97,15 @@ jobs:
 
       - name: Deploy theme to development
         run: |
+          if [ "${{ github.event_name == 'workflow_dispatch' && github.event.inputs.dry_run || 'false' }}" = "true" ]; then
+            dry_run_flags="--dry-run --itemize-changes"
+            echo "Running development deploy in dry-run mode"
+          else
+            dry_run_flags=""
+          fi
+
           rsync -az --delete --no-perms --no-owner --no-group \
+            ${dry_run_flags} \
             --exclude ".git/" \
             --exclude ".github/" \
             --exclude ".ddev/" \
@@ -107,9 +120,9 @@ jobs:
             "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}/"
 
   deploy-production:
-    if: (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/production')) || (github.event_name == 'workflow_dispatch' && github.event.inputs.target_environment == 'production')
+    if: (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/production')) || (github.event_name == 'workflow_dispatch' && github.event.inputs.target_environment == 'Production')
     runs-on: ubuntu-latest
-    environment: production
+    environment: Production
     timeout-minutes: 15
 
     steps:
@@ -158,7 +171,7 @@ jobs:
       - name: Generate deploy marker
         run: |
           cat > wp-content/themes/frizer/deploy-info.txt <<EOF
-          environment=production
+          environment=Production
           branch=${GITHUB_REF_NAME}
           deploy_ref=${{ github.event_name == 'workflow_dispatch' && github.event.inputs.deploy_ref || github.ref_name }}
           commit_sha=${GITHUB_SHA}
@@ -169,7 +182,15 @@ jobs:
 
       - name: Deploy theme to production
         run: |
+          if [ "${{ github.event_name == 'workflow_dispatch' && github.event.inputs.dry_run || 'false' }}" = "true" ]; then
+            dry_run_flags="--dry-run --itemize-changes"
+            echo "Running production deploy in dry-run mode"
+          else
+            dry_run_flags=""
+          fi
+
           rsync -az --delete --no-perms --no-owner --no-group \
+            ${dry_run_flags} \
             --exclude ".git/" \
             --exclude ".github/" \
             --exclude ".ddev/" \
