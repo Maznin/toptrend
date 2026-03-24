@@ -3,6 +3,9 @@
 // Uses early events (pointerdown/touchstart) so click handlers are attached before click fires.
 
 export function onFirstUserInteraction(callback) {
+
+  console.log('onFirstUserInteraction initialized');
+
   let initialized = false;
 
   const events = [
