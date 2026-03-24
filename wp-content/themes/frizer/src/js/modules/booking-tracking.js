@@ -1,9 +1,22 @@
 function emitTrackingEvent(eventName, params = {}) {
+  const debugModeEnabled = (() => {
+    try {
+      const queryParams = new URLSearchParams(window.location.search);
+      return queryParams.get('ga_debug') === '1' || window.localStorage.getItem('frizer_ga_debug') === '1';
+    } catch (error) {
+      return false;
+    }
+  })();
+
   const payload = {
     page_path: window.location.pathname,
     page_title: document.title,
     ...params,
   };
+
+  if (debugModeEnabled) {
+    payload.debug_mode = true;
+  }
 
   if (typeof window.gtag === 'function') {
     window.gtag('event', eventName, payload);
