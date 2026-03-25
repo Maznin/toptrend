@@ -14,8 +14,8 @@ $instagram = $data['instagram_link'] ?? '';
         <div class="slideout__header__logo">
             <span><?php bloginfo('name'); ?></span>
         </div>
-        <button class="slideout__header__close">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+        <button class="slideout__header__close" aria-label="<?php esc_attr_e('Close', 'frizer'); ?>">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m16 16-4-4m0 0L8 8m4 4 4-4m-4 4-4 4" />
             </svg>
         </button>
@@ -68,15 +68,15 @@ $instagram = $data['instagram_link'] ?? '';
         </div>
         <div class="socials">
             <?php if (!empty($facebook)): ?>
-                <a href="<?php echo esc_url($facebook['url']); ?>" target="_blank" rel="noopener noreferrer">
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 32 32">
+                <a href="<?php echo esc_url($facebook['url']); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php esc_attr_e('Facebook', 'frizer'); ?>">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
                         <path d="m21.95 5.005-3.306-.004c-3.206 0-5.277 2.124-5.277 5.415v2.495H10.05v4.515h3.317l-.004 9.575h4.641l.004-9.575h3.806l-.003-4.514h-3.803v-2.117c0-1.018.241-1.533 1.566-1.533l2.366-.001.01-4.256z" />
                     </svg>
                 </a>
             <?php endif; ?>
             <?php if (!empty($instagram)): ?>
-                <a href="<?php echo esc_url($instagram['url']); ?>" target="_blank" rel="noopener noreferrer">
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24">
+                <a href="<?php echo esc_url($instagram['url']); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php esc_attr_e('Instagram', 'frizer'); ?>">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                         <g fill="#fff">
                             <path fill-rule="evenodd" d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" />
                             <path d="M18 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z" />

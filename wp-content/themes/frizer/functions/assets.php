@@ -35,3 +35,16 @@ function frizer_remove_gutenberg_styles() {
     wp_deregister_style('core-block-supports');
 }
 add_action('wp_enqueue_scripts', 'frizer_remove_gutenberg_styles', 100);
+
+// Preload subpage hero background image so the browser discovers it early (fixes LCP)
+function frizer_preload_subpage_hero_image() {
+    if (!is_singular()) {
+        return;
+    }
+    $data  = get_field('sub_page_settings');
+    $image = $data['sub_page_hero_image'] ?? '';
+    if (!empty($image)) {
+        echo '<link rel="preload" as="image" href="' . esc_url($image) . '" fetchpriority="high">' . "\n";
+    }
+}
+add_action('wp_head', 'frizer_preload_subpage_hero_image', 1);
