@@ -42,7 +42,6 @@ module.exports = {
 							'.ddev/traefik/certs/top-trend.crt'
 						),
 					},
-					https: true,
 					reloadDelay: 0,
                     notify: false,
 				},
