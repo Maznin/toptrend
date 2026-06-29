@@ -1,5 +1,5 @@
 {
-	"name": "your-project-name",
+	"name": "frizer",
 	"scripts": {
 		"start": "wp-scripts start",
 		"start:hot": "wp-scripts start --hot",
