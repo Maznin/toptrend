@@ -6,12 +6,12 @@ $booking_url = $booking_page ? get_permalink($booking_page) : home_url('/zakaziv
 <section class="hero">
 	<div class="container hero__inner">
 		<div class="hero__content">
-			<span class="hero__subtitle section-subtitle">Dobrodošli u naš salon</span>
 			<h1 class="hero__title">
+				<span class="hero__subtitle section-subtitle">Muški i ženski frizerski salon u Nišu</span>
 				Za nas ste uvek na prvom mestu
 			</h1>
 			<p class="hero__desc">
-				Mi Vam predlažemo da ne rizikujete kod kuće i da dođete u naš salon Top Trend 018
+				Šišanje, farbanje, pramenovi i feniranje za žene i muškarce u centru Niša, u Jugovićevoj 1. Ne rizikujte kod kuće – dođite u Top Trend 018.
 			</p>
 			<a href="<?php echo esc_url($booking_url); ?>" class="hero__btn btn">
 				Zakažite termin<span class="btn__icon"></span>

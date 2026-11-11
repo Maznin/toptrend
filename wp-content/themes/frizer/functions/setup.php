@@ -90,76 +90,160 @@ add_filter('walker_nav_menu_start_el', 'frizer_menu_parent_toggle', 10, 4);
 add_filter('wpcf7_autop_or_not', '__return_false');
 
 /**
- * Preloads the main hero background image for faster display.
+ * Preloads the main hero background image for faster display (front page only;
+ * other pages don't show it).
  */
 function frizer_preload_main_hero_bg() {
+    if (!is_front_page()) {
+        return;
+    }
     $img_url = get_template_directory_uri() . '/src/img/top-trend-018-uvodna-sekcija.jpg';
     echo '<link rel="preload" as="image" href="' . esc_url($img_url) . '">';
 }
 add_action('wp_head', 'frizer_preload_main_hero_bg');
 
-add_action('wp_head', function () {
-  if (is_admin()) return;
-
-  $logo_id  = get_theme_mod('custom_logo');
-  $logo_url = $logo_id ? wp_get_attachment_image_url($logo_id, 'full') : '';
-
-  // Pull dynamic fields from ACF options
-  $top_header = get_field('top_header', 'options') ?? [];
-  $phone      = $top_header['phone_number']['title'] ?? '';
-
-  $social_urls = [];
-  foreach ($top_header['social_networks'] ?? [] as $network) {
-    if (!empty($network['link']['url'])) {
-      $social_urls[] = $network['link']['url'];
+/**
+ * Converts a Serbian phone number ("060 / 0320705" or "tel:0600320705") to E.164 (+381600320705).
+ */
+function frizer_phone_e164($phone) {
+    $digits = preg_replace('/\D+/', '', (string) $phone);
+    if ($digits === '') {
+        return '';
     }
-  }
+    if (strpos($digits, '381') === 0) {
+        return '+' . $digits;
+    }
+    if ($digits[0] === '0') {
+        return '+381' . substr($digits, 1);
+    }
+    return '+' . $digits;
+}
 
-  // Physical location — update here if the salon moves
-  $address = [
-    "@type"           => "PostalAddress",
-    "streetAddress"   => "Jugovićeva 1 (Lokal 7)",
-    "addressLocality" => "Niš",
-    "addressRegion"   => "RS",
-    "postalCode"      => "18000",
-    "addressCountry"  => "RS",
-  ];
-  $geo = [
-    "@type"     => "GeoCoordinates",
-    "latitude"  => 43.31622080401302,
-    "longitude" => 21.89004935855904,
-  ];
+/**
+ * Price range from the Amelia services ("100–12.000 RSD"), cached for 12 hours.
+ */
+function frizer_price_range() {
+    $range = get_transient('frizer_price_range');
+    if ($range !== false) {
+        return $range;
+    }
 
-  // Opening hours — update here if schedule changes
-  $opening_hours = [
-    [
-      "@type"     => "OpeningHoursSpecification",
-      "dayOfWeek" => ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-      "opens"     => "09:30",
-      "closes"    => "20:00",
-    ],
-    [
-      "@type"     => "OpeningHoursSpecification",
-      "dayOfWeek" => "Saturday",
-      "opens"     => "09:00",
-      "closes"    => "16:00",
-    ],
-  ];
+    $range  = '';
+    $prices = array_filter(array_map(function ($service) {
+        return (float) $service->price;
+    }, get_amelia_services()));
 
-  $data = [
-    "@context"                 => "https://schema.org",
-    "@type"                    => "HairSalon",
-    "name"                     => get_bloginfo('name'),
-    "url"                      => home_url('/'),
-    "image"                    => array_values(array_filter([$logo_url])),
-    "logo"                     => $logo_url,
-    "telephone"                => $phone,
-    "address"                  => $address,
-    "geo"                      => $geo,
-    "openingHoursSpecification"=> $opening_hours,
-    "sameAs"                   => $social_urls,
-    "hasMap"                   => "https://maps.google.com/?q=43.31622080401302,21.89004935855904",
-  ];
+    if ($prices) {
+        $fmt   = function ($n) { return number_format($n, 0, ',', '.'); };
+        $range = $fmt(min($prices)) . '–' . $fmt(max($prices)) . ' RSD';
+    }
 
-  echo '<script type="application/ld+json">'.wp_json_encode($data, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE|JSON_HEX_TAG).'</script>';
+    set_transient('frizer_price_range', $range, 12 * HOUR_IN_SECONDS);
+    return $range;
+}
+
+/**
+ * Local business properties of the salon for structured data.
+ * Address, coordinates and opening hours are hardcoded: update here if they change.
+ */
+function frizer_salon_schema_props() {
+    $top_header = function_exists('get_field') ? (get_field('top_header', 'options') ?: []) : [];
+    $phone      = $top_header['phone_number']['url'] ?? ($top_header['phone_number']['title'] ?? '');
+
+    $social_urls = [];
+    foreach ($top_header['social_networks'] ?? [] as $network) {
+        if (!empty($network['link']['url'])) {
+            $social_urls[] = strtok($network['link']['url'], '#'); // drop "#" fragments
+        }
+    }
+
+    $theme_img = get_template_directory_uri() . '/src/img/';
+
+    return array_filter([
+        'description' => 'Frizerski salon u centru Niša: muško i žensko šišanje, farbanje, izvlačenje pramenova, feniranje i brijanje. Online zakazivanje termina.',
+        'telephone'   => frizer_phone_e164($phone),
+        'priceRange'  => frizer_price_range(),
+        'image'       => [
+            $theme_img . 'top-trend-018-frizerski-salon-1.jpg',
+        ],
+        'address'     => [
+            '@type'           => 'PostalAddress',
+            'streetAddress'   => 'Jugovićeva 1 (Lokal 7)',
+            'addressLocality' => 'Niš',
+            'postalCode'      => '18000',
+            'addressCountry'  => 'RS',
+        ],
+        'geo'         => [
+            '@type'     => 'GeoCoordinates',
+            'latitude'  => 43.31622080401302,
+            'longitude' => 21.89004935855904,
+        ],
+        'areaServed'  => ['@type' => 'City', 'name' => 'Niš'],
+        'openingHoursSpecification' => [
+            [
+                '@type'     => 'OpeningHoursSpecification',
+                'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                'opens'     => '09:30',
+                'closes'    => '20:00',
+            ],
+            [
+                '@type'     => 'OpeningHoursSpecification',
+                'dayOfWeek' => 'Saturday',
+                'opens'     => '09:00',
+                'closes'    => '16:00',
+            ],
+        ],
+        'hasMap'      => 'https://maps.google.com/?q=43.31622080401302,21.89004935855904',
+        'sameAs'      => $social_urls,
+    ]);
+}
+
+/**
+ * With Yoast: turn Yoast's Organization (#organization) into the HairSalon entity, so the
+ * site has one business entity that Yoast's WebSite/WebPage pieces already reference.
+ */
+add_filter('wpseo_schema_organization', function ($data) {
+    $props = frizer_salon_schema_props();
+
+    $data['@type'] = ['Organization', 'HairSalon'];
+
+    // Keep Yoast's logo ImageObject reference and add real salon photos.
+    $images = [];
+    if (!empty($data['image'])) {
+        $images[] = $data['image'];
+    }
+    $data['image'] = array_merge($images, $props['image'] ?? []);
+    unset($props['image']);
+
+    if (!empty($props['sameAs'])) {
+        $data['sameAs'] = array_values(array_unique(array_merge($data['sameAs'] ?? [], $props['sameAs'])));
+        unset($props['sameAs']);
+    }
+
+    return array_merge($data, $props);
+});
+
+/**
+ * Without Yoast: output a standalone HairSalon block as a fallback.
+ */
+add_action('wp_head', function () {
+    if (is_admin() || defined('WPSEO_VERSION')) {
+        return;
+    }
+
+    $logo_id  = get_theme_mod('custom_logo');
+    $logo_url = $logo_id ? wp_get_attachment_image_url($logo_id, 'full') : '';
+    $props    = frizer_salon_schema_props();
+
+    $data = array_merge([
+        '@context' => 'https://schema.org',
+        '@type'    => 'HairSalon',
+        '@id'      => home_url('/#organization'),
+        'name'     => get_bloginfo('name'),
+        'url'      => home_url('/'),
+        'logo'     => $logo_url,
+    ], $props);
+    $data['image'] = array_values(array_filter(array_merge([$logo_url], $props['image'] ?? [])));
+
+    echo '<script type="application/ld+json">' . wp_json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) . '</script>';
 });
