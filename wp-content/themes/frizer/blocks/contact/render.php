@@ -20,7 +20,7 @@ $email = $data['email'] ?? '';
 					<div class="contact__info__item contact__info__item--phone">
 						<div>
 							<div class="label"><?php _e('Pozovite nas', 'frizer'); ?></div>
-							<div class="value"><a href="<?php echo esc_html($phone['phone']['url']); ?>"><?php echo esc_html($phone['phone']['title']); ?></a></div>
+							<div class="value"><a href="<?php echo esc_url($phone['phone']['url']); ?>"><?php echo esc_html($phone['phone']['title']); ?></a></div>
 						</div>
 					</div>
 					<?php endforeach; ?>
@@ -32,7 +32,7 @@ $email = $data['email'] ?? '';
 					<div class="contact__info__item contact__info__item--email">
 						<div>
 							<div class="label"><?php _e('Email', 'frizer'); ?></div>
-							<div class="value"><a href="<?php echo esc_html($email['url']); ?>"><?php echo esc_html($email['title']); ?></a></div>
+							<div class="value"><a href="<?php echo esc_url($email['url']); ?>"><?php echo esc_html($email['title']); ?></a></div>
 						</div>
 					</div>
 				<?php endif; ?>
@@ -43,7 +43,7 @@ $email = $data['email'] ?? '';
 					<div class="contact__info__item contact__info__item--address">
 						<div>
 							<div class="label"><?php _e('Adresa', 'frizer'); ?></div>
-							<div class="value"><a href="<?php echo esc_html($address['url']); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html($address['title']); ?></a></div>
+							<div class="value"><a href="<?php echo esc_url($address['url']); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html($address['title']); ?></a></div>
 						</div>
 					</div>
 				<?php endif; ?>

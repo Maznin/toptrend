@@ -216,7 +216,8 @@
     .menu-item {
         position: relative;
 
-        a {
+        a,
+        .menu-item__toggle {
             font-weight: 600;
             line-height: 1.6;
             padding: 16px 22px;
@@ -229,9 +230,31 @@
             }
         }
 
+        // Parent items without a real page: a button styled like the links.
+        .menu-item__toggle {
+            width: 100%;
+            margin: 0;
+            background: none;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-radius: 0;
+            color: var(--c-white);
+            font-family: inherit;
+            font-size: inherit;
+            text-align: left;
+            cursor: pointer;
+            transition: var(--link-color-transition-1);
+
+            &:hover {
+                color: var(--c-primary);
+            }
+        }
+
         &.current-menu-item,
         &.current-menu-parent > {
-            a {
+            a,
+            .menu-item__toggle {
                 color: var(--c-primary);
             }
         }
@@ -288,7 +311,8 @@
                 }
             }
 
-            &:hover .sub-menu {
+            &:hover .sub-menu,
+            &:focus-within .sub-menu {
                 @include respond-to(lg) {
                     animation: subMenuFadein 400ms ease-out;
                     display: block;

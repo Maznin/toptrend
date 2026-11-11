@@ -35,7 +35,7 @@ $socials = [
             </div>
             <?php if (has_nav_menu('footer')) : ?>
                 <div class="footer__col footer__col--nav">
-                    <h5 class="footer__col__title"><?php esc_html_e('Strane', 'frizer'); ?></h5>
+                    <h2 class="h5 footer__col__title"><?php esc_html_e('Strane', 'frizer'); ?></h2>
                     <?php
                     wp_nav_menu(array(
                         'theme_location' => 'footer',
@@ -46,7 +46,7 @@ $socials = [
                 </div>
             <?php endif; ?>
             <div class="footer__col footer__col--contact">
-                <h5 class="footer__col__title"><?php esc_html_e('Kontakt', 'frizer'); ?></h5>
+                <h2 class="h5 footer__col__title"><?php esc_html_e('Kontakt', 'frizer'); ?></h2>
                 <div class="footer__col__contact">
                     <?php if (!empty($contacts['phones'])): ?>
                         <?php foreach ($contacts['phones'] as $phone): ?>
@@ -68,7 +68,7 @@ $socials = [
                 </div>
             </div>
             <div class="footer__col footer__col--socials">
-                <h5 class="footer__col__title"><?php esc_html_e('Pratite Nas', 'frizer'); ?></h5>
+                <h2 class="h5 footer__col__title"><?php esc_html_e('Pratite Nas', 'frizer'); ?></h2>
                 <div class="footer__col__socials">
                     <?php foreach ($socials as $name => $social): ?>
                         <?php if (!empty($social['url'])): ?>
@@ -83,7 +83,8 @@ $socials = [
 
     </div>
     <div class="footer__copyright">
-        Copyright &copy; <?php echo esc_html(date_i18n(__('Y', 'frizer'))); ?> <?php echo esc_html(get_bloginfo('name')); ?>
+        <span>Copyright &copy; <?php echo esc_html(date_i18n(__('Y', 'frizer'))); ?> <?php echo esc_html(get_bloginfo('name')); ?></span>
+        <span class="footer__credit">Izrada sajta: <a href="https://svojsajt.rs/">svojsajt.rs</a></span>
     </div>
 </footer>
 <?php get_template_part('parts/slideout-sidebar'); ?>
