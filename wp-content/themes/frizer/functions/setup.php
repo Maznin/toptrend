@@ -59,7 +59,11 @@ add_action('after_setup_theme', 'frizer_register_footer_menu');
 
 /**
  * Renders parent menu items that only exist to hold a submenu (custom link "#" or empty)
- * as a <button> instead of a dead href="#" link. The menu data itself is unchanged.
+ * as a submenu toggle instead of a dead href="#" link. The menu data itself is unchanged.
+ *
+ * It is an <a> without href (role="button") rather than a <button> on purpose: the existing
+ * `.main-nav .menu-item a` styles apply to it, so it still looks right for visitors whose
+ * browser holds an older cached copy of LiteSpeed's combined CSS (same file name, ~13-day max-age).
  */
 function frizer_menu_parent_toggle($item_output, $item, $depth, $args) {
   $url = trim((string) $item->url);
@@ -73,9 +77,9 @@ function frizer_menu_parent_toggle($item_output, $item, $depth, $args) {
   $title = apply_filters('nav_menu_item_title', $title, $item, $args, $depth);
 
   return ($args->before ?? '')
-    . '<button type="button" class="menu-item__toggle" aria-expanded="false">'
+    . '<a class="menu-item__toggle" role="button" tabindex="0" aria-expanded="false">'
     . ($args->link_before ?? '') . $title . ($args->link_after ?? '')
-    . '</button>'
+    . '</a>'
     . ($args->after ?? '');
 }
 add_filter('walker_nav_menu_start_el', 'frizer_menu_parent_toggle', 10, 4);
