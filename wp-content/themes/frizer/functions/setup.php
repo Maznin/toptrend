@@ -58,6 +58,29 @@ function frizer_register_footer_menu() {
 add_action('after_setup_theme', 'frizer_register_footer_menu');
 
 /**
+ * Renders parent menu items that only exist to hold a submenu (custom link "#" or empty)
+ * as a <button> instead of a dead href="#" link. The menu data itself is unchanged.
+ */
+function frizer_menu_parent_toggle($item_output, $item, $depth, $args) {
+  $url = trim((string) $item->url);
+  $has_children = in_array('menu-item-has-children', (array) $item->classes, true);
+
+  if (!$has_children || ($url !== '#' && $url !== '')) {
+    return $item_output;
+  }
+
+  $title = apply_filters('the_title', $item->title, $item->ID);
+  $title = apply_filters('nav_menu_item_title', $title, $item, $args, $depth);
+
+  return ($args->before ?? '')
+    . '<button type="button" class="menu-item__toggle" aria-expanded="false">'
+    . ($args->link_before ?? '') . $title . ($args->link_after ?? '')
+    . '</button>'
+    . ($args->after ?? '');
+}
+add_filter('walker_nav_menu_start_el', 'frizer_menu_parent_toggle', 10, 4);
+
+/**
  * Remove automatic paragraph formatting for Contact Form 7
  */
 add_filter('wpcf7_autop_or_not', '__return_false');

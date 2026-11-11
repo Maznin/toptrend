@@ -23,7 +23,10 @@ export function initNavigation() {
 
         subMenu.classList.toggle('is-open');
         toggle.classList.toggle('is-active');
-        toggle.setAttribute('aria-expanded', subMenu.classList.contains('is-open').toString());
+
+        // aria-expanded belongs on the control, not the <li>.
+        const control = toggle.querySelector(':scope > .menu-item__toggle, :scope > a');
+        control?.setAttribute('aria-expanded', subMenu.classList.contains('is-open').toString());
       });
     }
   });
