@@ -38,7 +38,7 @@ $instagram = $data['instagram_link'] ?? '';
                 <?php foreach ($phones as $phone): ?>
                     <div class="contact-item contact-item--phone">
                         <div>
-                            <div class="value"><a href="<?php echo esc_html($phone['phone']['url']); ?>"><?php echo esc_html($phone['phone']['title']); ?></a></div>
+                            <div class="value"><a href="<?php echo esc_url($phone['phone']['url']); ?>"><?php echo esc_html($phone['phone']['title']); ?></a></div>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -50,7 +50,7 @@ $instagram = $data['instagram_link'] ?? '';
                 <div class="contact-item contact-item--email">
                     <div>
                         <div class="label"><?php _e('Email', 'frizer'); ?></div>
-                        <div class="value"><a href="<?php echo esc_html($email['url']); ?>"><?php echo esc_html($email['title']); ?></a></div>
+                        <div class="value"><a href="<?php echo esc_url($email['url']); ?>"><?php echo esc_html($email['title']); ?></a></div>
                     </div>
                 </div>
             <?php endif; ?>
@@ -61,7 +61,7 @@ $instagram = $data['instagram_link'] ?? '';
                 <div class="contact-item contact-item--address">
                     <div>
                         <div class="label"><?php _e('Adresa', 'frizer'); ?></div>
-                        <div class="value"><a href="<?php echo esc_html($address['url']); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html($address['title']); ?></a></div>
+                        <div class="value"><a href="<?php echo esc_url($address['url']); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html($address['title']); ?></a></div>
                     </div>
                 </div>
             <?php endif; ?>

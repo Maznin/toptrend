@@ -134,5 +134,5 @@ add_action('wp_head', function () {
     "hasMap"                   => "https://maps.google.com/?q=43.31622080401302,21.89004935855904",
   ];
 
-  echo '<script type="application/ld+json">'.wp_json_encode($data, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE).'</script>';
+  echo '<script type="application/ld+json">'.wp_json_encode($data, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE|JSON_HEX_TAG).'</script>';
 });
