@@ -230,25 +230,10 @@
             }
         }
 
-        // Parent items without a real page: a button styled like the links.
+        // Parent items without a real page (<a role="button"> without href).
         .menu-item__toggle {
-            width: 100%;
-            margin: 0;
-            background: none;
-            border-top: none;
-            border-left: none;
-            border-right: none;
-            border-radius: 0;
-            color: var(--c-white);
-            font-family: inherit;
-            font-size: inherit;
-            text-align: left;
             cursor: pointer;
-            transition: var(--link-color-transition-1);
-
-            &:hover {
-                color: var(--c-primary);
-            }
+            user-select: none;
         }
 
         &.current-menu-item,

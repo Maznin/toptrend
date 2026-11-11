@@ -10,6 +10,16 @@ export function initNavigation() {
     });
   }
 
+  // Keyboard support for href-less submenu toggles (<a role="button">): Enter/Space act as a click.
+  document.querySelectorAll('.menu-item__toggle').forEach(control => {
+    control.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        control.click();
+      }
+    });
+  });
+
   // Sub-menu logic
   const subMenuToggles = document.querySelectorAll('.menu-item-has-children');
   subMenuToggles.forEach(toggle => {
