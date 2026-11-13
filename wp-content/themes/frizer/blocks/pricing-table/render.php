@@ -23,5 +23,7 @@
 		<?php else : ?>
 			<h2 class="h4 text-center">Cenovnik trenutno nije dostupan. Kontaktirajte nas na <a href="tel:0600320705">060 / 0320705</a></h2>
 		<?php endif; ?>
+
+		<?php frizer_related_page_link(); ?>
 	</div>
 </section>

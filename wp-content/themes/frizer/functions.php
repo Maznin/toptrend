@@ -13,4 +13,5 @@ require_once THEME_PATH . '/functions/setup.php';
 require_once THEME_PATH . '/functions/roles.php';
 require_once THEME_PATH . '/functions/amelia.php';
 require_once THEME_PATH . '/functions/banner-handler.php';
+require_once THEME_PATH . '/functions/related-links.php';
 require_once THEME_PATH . '/blocks/register-acf-blocks.php';

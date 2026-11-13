@@ -44,6 +44,9 @@ if (is_array($data)) {
 			<div class="filter-container">
 				<?php while (have_rows('gallery')): the_row();
 					$img = get_sub_field("image");
+					if (empty($img["url"])) {
+						continue; // image deleted from the media library
+					}
 					$categories = get_sub_field("data_category");
 					$filter = is_array($categories) ? implode(",", array_map('esc_attr', $categories)) : '';
 				?>
@@ -60,5 +63,7 @@ if (is_array($data)) {
 				<?php endwhile; ?>
 			</div>
 		</div>
+
+		<?php frizer_related_page_link(); ?>
 	</div>
 </section>
