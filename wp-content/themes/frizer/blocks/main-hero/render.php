@@ -11,7 +11,7 @@ $booking_url = $booking_page ? get_permalink($booking_page) : home_url('/zakaziv
 				Za nas ste uvek na prvom mestu
 			</h1>
 			<p class="hero__desc">
-				Šišanje, farbanje, pramenovi i feniranje za žene i muškarce u centru Niša, u Jugovićevoj 1. Ne rizikujte kod kuće - dođite u Top Trend 018.
+				Šišanje, farbanje, pramenovi i feniranje za žene i muškarce u centru Niša, u Jugovićevoj 1. Ne rizikujte kod kuće &#45; dođite u Top Trend 018.
 			</p>
 			<a href="<?php echo esc_url($booking_url); ?>" class="hero__btn btn">
 				Zakažite termin<span class="btn__icon"></span>
