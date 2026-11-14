@@ -9,11 +9,14 @@
 		<?php if (!empty($services)) : ?>
 			<div class="pricing-table__list">
 				<?php foreach ($services as $service) : ?>
-					<div class="pricing-table__item">
+					<div class="pricing-table__item<?php echo frizer_is_bookable_service($service->id) ? ' pricing-table__item--bookable' : ''; ?>">
 						<div class="pricing-table__item__content">
 							<div class="layout-help">
 								<h2 class="h4 pricing-table__item__title"><?php echo esc_html($service->name) ?></h2>
 								<span class="pricing-table__item__price"><?php echo esc_html($service->price); ?><span class="currency">din</span></span>
+								<?php if (frizer_is_bookable_service($service->id)) : ?>
+									<a href="<?php echo esc_url(frizer_booking_url($service->id)); ?>" class="pricing-table__item__book" aria-label="<?php echo esc_attr(sprintf(__('Zakaži: %s', 'frizer'), $service->name)); ?>"><span class="pricing-table__item__book__text"><?php esc_html_e('Zakaži', 'frizer'); ?></span></a>
+								<?php endif; ?>
 							</div>
 						</div>
 					</div>

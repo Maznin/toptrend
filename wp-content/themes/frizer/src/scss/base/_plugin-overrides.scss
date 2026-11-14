@@ -112,3 +112,21 @@
 #amelia-container > div.am-fs-sb > div.am-fs-sb__step-wrapper > div > div > div > div:nth-child(2) {
     display: none;
 }
+
+// The Amelia block has no theme .container around it, so on phones the form ran from edge
+// to edge. Give it the same side gutter as the rest of the site's content.
+.wp-block-amelia-step-booking-gutenberg-block {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+// Calendar: Amelia puts an inline outline on the focused day cell (<td>). The cell is
+// larger than the visible day box inside it, so the outline sat off-centre around the
+// selected date. Draw the focus ring on the day box instead (keyboard focus only).
+.amelia-v2-booking #amelia-container td.am-advsc__dayGridMonth-cell {
+    outline: none !important;
+
+    &:focus-visible .fc-daygrid-day-frame {
+        box-shadow: 0 0 0 2px var(--am-c-cal-init);
+    }
+}

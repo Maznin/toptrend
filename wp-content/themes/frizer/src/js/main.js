@@ -4,6 +4,8 @@ import { onScreenMax, onScreenMin } from './modules/utils.js';
 import { onFirstUserInteraction } from './modules/user-interaction-init.js';
 import { fancyBoxGallery } from './modules/fancybox.js';
 import { headerBanner } from './modules/headerBanner.js';
+import { initClickTracking } from './modules/clickTracking.js';
+import { initBookingBar } from './modules/bookingBar.js';
 
 function initializeScript() {
   fancyBoxGallery();
@@ -16,5 +18,8 @@ function initializeScript() {
   });
 }
 
+// Registered right away (not deferred): the first click is often the first interaction.
+initClickTracking();
+initBookingBar();
 headerBanner();
 onFirstUserInteraction(initializeScript);

@@ -1,0 +1,240 @@
+@use '../abstracts/index' as *;
+
+// Bar fixed to the bottom of the screen on mobile/tablet. Hidden until the visitor
+// scrolls (bookingBar.js adds .is-visible).
+.booking-bar {
+    position: fixed;
+    transform: translateY(calc(100% + 20px));
+    visibility: hidden;
+    transition: transform 300ms ease-out, visibility 0s linear 300ms;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 90;
+    display: flex;
+    padding-bottom: env(safe-area-inset-bottom);
+    background-color: var(--c-neutral-900);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25);
+
+    @include respond-to(lg) {
+        display: none;
+    }
+
+    &.is-visible {
+        transform: none;
+        visibility: visible;
+        transition: transform 300ms ease-out, visibility 0s linear 0s;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+
+        &.is-visible {
+            transition: none;
+        }
+    }
+
+    &__btn {
+        flex: 1 1 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 56px;
+        padding: 4px 10px 0;
+        font-family: var(--font-main);
+        font-size: var(--fs-8);
+        font-weight: 900;
+        text-transform: uppercase;
+        text-align: center;
+
+        &--book,
+        &--book:hover,
+        &--book:focus {
+            background-color: var(--c-primary);
+            color: var(--c-white);
+        }
+
+        &--call,
+        &--call:hover,
+        &--call:focus {
+            background-color: var(--c-neutral-900);
+            color: var(--c-white);
+        }
+
+        &--call:before {
+            content: "";
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            margin: -4px 8px 0 0;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' transform='scale(-1 1)' viewBox='0 0 24 24'%3E%3Cpath stroke='%23a7cd0e' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 5.5C21 14.06 14.06 21 5.5 21a15.7 15.7 0 0 1-1.148-.042c-.435-.032-.653-.048-.851-.162a1.06 1.06 0 0 1-.402-.432C3 20.158 3 19.918 3 19.438v-2.817c0-.404 0-.606.066-.779a1 1 0 0 1 .278-.396c.14-.122.33-.191.71-.329l3.206-1.166c.442-.16.662-.24.872-.227a1 1 0 0 1 .513.182c.171.121.292.322.534.725L10 16a12.1 12.1 0 0 0 6-6l-1.369-.821c-.402-.242-.604-.363-.725-.534a1 1 0 0 1-.182-.513c-.014-.21.066-.43.227-.872h0l1.166-3.207c.138-.38.207-.569.329-.709a1 1 0 0 1 .396-.278C16.015 3 16.217 3 16.621 3h2.817c.48 0 .72 0 .926.1.17.081.338.237.432.401.114.198.13.416.162.85.028.38.042.763.042 1.149Z'/%3E%3C/svg%3E") center no-repeat;
+        }
+    }
+}
+
+// Keep the bar from covering the end of the page
+body.has-booking-bar {
+    @include respond-to-down(lg) {
+        padding-bottom: calc(56px + env(safe-area-inset-bottom));
+    }
+}
+
+// "Zakaži" per service in the price list: at the end of the service row, and the whole
+// card is clickable (the link's ::after covers it). Icon only on small phones.
+.pricing-table__item--bookable {
+    position: relative;
+    transition: background-color var(--deffault-transition);
+
+    .layout-help {
+        gap: 12px;
+    }
+
+    .pricing-table__item__title {
+        margin-right: auto;
+    }
+
+    // Shorter dashed line before the price on small phones, to leave room for the icon
+    @include respond-to-down(sm) {
+        .pricing-table__item__price {
+            flex-shrink: 0;
+            padding-left: 28px;
+
+            &:before {
+                width: 22px;
+            }
+        }
+    }
+
+    &:hover {
+        background-color: hsl(240, 1%, 25%);
+    }
+}
+
+.pricing-table__item__book {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--c-primary);
+    color: var(--c-primary);
+    font-family: var(--font-main);
+    font-size: var(--fs-9);
+    font-weight: 900;
+    text-transform: uppercase;
+    transition: background-color var(--deffault-transition), color var(--deffault-transition);
+
+    @include respond-to(sm) {
+        width: auto;
+        padding: 0 14px;
+    }
+
+    // Calendar icon
+    &:before {
+        content: "";
+        flex-shrink: 0;
+        width: 16px;
+        height: 16px;
+        background-color: currentColor;
+        -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2'/%3E%3Cpath d='M16 2v4M8 2v4M3 10h18'/%3E%3C/svg%3E") center / contain no-repeat;
+        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2'/%3E%3Cpath d='M16 2v4M8 2v4M3 10h18'/%3E%3C/svg%3E") center / contain no-repeat;
+    }
+
+    // Makes the whole service card the click target
+    &:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+    }
+
+    &__text {
+        display: none;
+        padding-top: 3px;
+
+        @include respond-to(sm) {
+            display: inline;
+        }
+    }
+
+    .pricing-table__item--bookable:hover &,
+    &:focus-visible {
+        background-color: var(--c-primary);
+        color: var(--c-neutral-900);
+    }
+}
+
+// /zakazivanje/?usluga=<id>: chosen service above the Amelia form, with a link back to
+// the full form (Amelia hides the service step when a service is preselected).
+.booking-preselected {
+    &__bar {
+        max-width: 760px; // Amelia's step form width
+        margin: 40px auto 0;
+        padding: 14px 18px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px 20px;
+        background-color: var(--c-neutral-800);
+        border-left: 3px solid var(--c-primary);
+        box-shadow: var(--box-shadow-4);
+        text-align: left;
+    }
+
+    &__service {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 4px 12px;
+    }
+
+    &__label {
+        width: 100%;
+        font-size: var(--fs-9);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--c-neutral-300);
+    }
+
+    &__name {
+        font-family: var(--font-main);
+        font-size: var(--fs-6);
+        color: var(--c-white);
+    }
+
+    &__price {
+        font-family: var(--font-main);
+        font-weight: 600;
+        color: var(--c-primary);
+
+        .currency {
+            font-size: var(--fs-9);
+        }
+    }
+
+    &__change {
+        flex-shrink: 0;
+        padding: 9px 14px 7px;
+        border: 1px solid var(--c-primary);
+        color: var(--c-primary);
+        font-family: var(--font-main);
+        font-size: var(--fs-9);
+        font-weight: 900;
+        text-transform: uppercase;
+        transition: background-color var(--deffault-transition), color var(--deffault-transition);
+
+        &:hover,
+        &:focus-visible {
+            background-color: var(--c-primary);
+            color: var(--c-neutral-900);
+        }
+    }
+
+    // Amelia's form normally has 100px top margin; keep it close to the bar. One class more
+    // than Amelia's own selector, because Amelia's CSS loads after the theme's.
+    .amelia-v2-booking #amelia-container.am-fs__wrapper {
+        margin-top: 16px;
+    }
+}
