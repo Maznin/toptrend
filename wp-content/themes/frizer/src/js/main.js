@@ -6,6 +6,7 @@ import { fancyBoxGallery } from './modules/fancybox.js';
 import { headerBanner } from './modules/headerBanner.js';
 import { initClickTracking } from './modules/clickTracking.js';
 import { initBookingBar } from './modules/bookingBar.js';
+import { initBookingPreselected } from './modules/bookingPreselected.js';
 
 function initializeScript() {
   fancyBoxGallery();
@@ -21,5 +22,6 @@ function initializeScript() {
 // Registered right away (not deferred): the first click is often the first interaction.
 initClickTracking();
 initBookingBar();
+initBookingPreselected();
 headerBanner();
 onFirstUserInteraction(initializeScript);

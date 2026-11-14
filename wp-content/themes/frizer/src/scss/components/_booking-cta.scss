@@ -232,9 +232,32 @@ body.has-booking-bar {
         }
     }
 
+    // Hide the bar on the confirmation step: the booking summary there already shows the service.
+    &:has(.am-fs__congrats) .booking-preselected__bar {
+        display: none;
+    }
+
+    // With a preselected service Amelia skips the service choice, but the first step's
+    // heading still says "Izaberite uslugu". Relabel it (first step only: .am-fs__init).
+    .amelia-v2-booking #amelia-container .am-fs__main-inner:has(.am-fs__init) .am-fs__main-heading-inner-title {
+        position: relative;
+        visibility: hidden;
+
+        &:before {
+            content: "Izaberite frizera";
+            display: block !important; // Amelia hides ::before here
+            position: absolute;
+            left: 0;
+            top: 0;
+            white-space: nowrap;
+            visibility: visible;
+        }
+    }
+
     // Amelia's form normally has 100px top margin; keep it close to the bar. One class more
-    // than Amelia's own selector, because Amelia's CSS loads after the theme's.
-    .amelia-v2-booking #amelia-container.am-fs__wrapper {
+    // than Amelia's own selector, because Amelia's CSS loads after the theme's. Not on the
+    // confirmation step: the bar is hidden there, so Amelia's normal spacing applies.
+    &:not(:has(.am-fs__congrats)) .amelia-v2-booking #amelia-container.am-fs__wrapper {
         margin-top: 16px;
     }
 }
