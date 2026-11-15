@@ -84,3 +84,71 @@ function get_amelia_services($args = array()) {
     
     return $results ? $results : array();
 }
+/**
+ * Serbian Latin translation for Amelia.
+ *
+ * Amelia ships its sr_RS translation in Cyrillic inside the plugin folder, so every plugin
+ * update would switch the booking form to Cyrillic while the rest of the site is Latin.
+ * The theme keeps a Latin copy in languages/amelia/ and loads it instead. Amelia loads
+ * its own file on plugins_loaded (before the theme), so it is swapped here.
+ *
+ * After an Amelia update, regenerate the file from the plugin's new .po (transliterate the
+ * Cyrillic, keep the existing Latin wording) so new strings are covered.
+ */
+add_action('after_setup_theme', function () {
+    $domain = 'wpamelia';
+    $locale = determine_locale();
+    if ($locale !== 'sr_RS') {
+        return;
+    }
+
+    $mofile = THEME_PATH . '/languages/amelia/' . $domain . '-' . $locale . '.mo';
+    if (!is_readable($mofile)) {
+        return;
+    }
+
+    unload_textdomain($domain, true);
+    load_textdomain($domain, $mofile, $locale);
+});
+
+/**
+ * Latin month and day names in Amelia calendars.
+ *
+ * Amelia formats dates with the browser's Intl API using the WordPress locale (sr_RS),
+ * and browsers default Serbian to Cyrillic ("новембар", "пон"). This runs before Amelia's
+ * scripts and maps plain Serbian locales to sr-Latn-RS. It is printed early in <head> and
+ * excluded from LiteSpeed's JS optimization so it always runs first.
+ */
+function frizer_serbian_latin_dates_script() {
+    if (determine_locale() !== 'sr_RS') {
+        return;
+    }
+
+    $js = <<<'JS'
+(function () {
+    if (!window.Intl || !Intl.DateTimeFormat || Intl.DateTimeFormat.__frizerLatn) return;
+    var fix = function (l) {
+        if (Array.isArray(l)) return l.map(fix);
+        return typeof l === 'string' && /^sr([-_]rs)?$/i.test(l) ? 'sr-Latn-RS' : l;
+    };
+    var DTF = Intl.DateTimeFormat;
+    var Wrapped = function (l, o) { return new DTF(fix(l), o); };
+    Wrapped.prototype = DTF.prototype;
+    Wrapped.supportedLocalesOf = function (l, o) { return DTF.supportedLocalesOf(fix(l), o); };
+    Wrapped.__frizerLatn = true;
+    Intl.DateTimeFormat = Wrapped;
+    ['toLocaleString', 'toLocaleDateString', 'toLocaleTimeString'].forEach(function (m) {
+        var orig = Date.prototype[m];
+        Date.prototype[m] = function (l, o) { return orig.call(this, fix(l), o); };
+    });
+})();
+JS;
+
+    wp_print_inline_script_tag($js, [
+        'id'               => 'frizer-sr-latn-dates',
+        'data-no-optimize' => '1',
+        'data-no-defer'    => '1',
+    ]);
+}
+add_action('wp_head', 'frizer_serbian_latin_dates_script', 1);
+add_action('admin_head', 'frizer_serbian_latin_dates_script', 1);
